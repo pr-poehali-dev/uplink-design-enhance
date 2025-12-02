@@ -56,12 +56,12 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border">
+      <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <img 
-                src="https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/28e1f169-2cbd-419a-a6af-24533ae8e35f.jpg" 
+                src="https://uplink-ctrl.ru/images/e0d6acdf-796a-af50-1ddf-14159e21e762.png" 
                 alt="Uplink Control" 
                 className="h-12 w-auto"
               />
@@ -111,7 +111,7 @@ const Index = () => {
                   Наши услуги
                   <Icon name="ArrowRight" size={20} className="ml-2" />
                 </Button>
-                <Button size="lg" variant="outline" onClick={() => scrollToSection('contacts')} className="bg-white text-foreground hover:bg-white/90">
+                <Button size="lg" variant="outline" onClick={() => scrollToSection('contacts')} className="bg-background/50 border-primary text-foreground hover:bg-primary hover:text-primary-foreground">
                   Получить консультацию
                 </Button>
               </div>
@@ -307,13 +307,13 @@ const Index = () => {
         </section>
       </main>
 
-      <footer className="bg-secondary text-white py-12">
+      <footer className="bg-secondary/80 border-t border-border text-white py-12">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <img 
-                  src="https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/28e1f169-2cbd-419a-a6af-24533ae8e35f.jpg" 
+                  src="https://uplink-ctrl.ru/images/e0d6acdf-796a-af50-1ddf-14159e21e762.png" 
                   alt="Uplink Control" 
                   className="h-10 w-auto"
                 />
