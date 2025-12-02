@@ -63,7 +63,7 @@ const Index = () => {
               <img 
                 src="https://uplink-ctrl.ru/images/e0d6acdf-796a-af50-1ddf-14159e21e762.png" 
                 alt="Uplink Control" 
-                className="h-12 w-auto"
+                className="h-16 w-auto"
               />
               <div>
                 <h1 className="text-xl font-bold text-foreground">Uplink Control</h1>
@@ -315,7 +315,7 @@ const Index = () => {
                 <img 
                   src="https://uplink-ctrl.ru/images/e0d6acdf-796a-af50-1ddf-14159e21e762.png" 
                   alt="Uplink Control" 
-                  className="h-10 w-auto"
+                  className="h-12 w-auto"
                 />
                 <div>
                   <h3 className="font-bold text-lg">Uplink Control</h3>
