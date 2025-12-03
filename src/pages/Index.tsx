@@ -348,6 +348,45 @@ const Index = () => {
             </div>
           </div>
         </section>
+
+        <section className="py-16 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Бренды с которыми мы работаем</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Сертифицированное оборудование от ведущих мировых производителей
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
+              {[
+                { name: 'Hikvision', logo: 'https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/c077ceaf-ec1e-498c-bd88-591609c493a5.jpg' },
+                { name: 'Dahua', logo: 'https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/c5940546-947f-41cb-b0a1-39805680b588.jpg' },
+                { name: 'Axis', logo: 'https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/022f8d90-f49f-4238-86f8-427453c18594.jpg' },
+                { name: 'Cisco', logo: 'https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/f2bdef18-8bf8-4323-90ce-f7e69d70ddcc.jpg' },
+                { name: 'Ubiquiti', logo: 'https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/2a404191-fd39-43aa-88af-a855088b1bc1.jpg' },
+                { name: 'ZKTeco', logo: 'https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/2773b897-25a0-4434-93ff-14ab73f48c7c.jpg' }
+              ].map((brand, index) => (
+                <motion.div
+                  key={brand.name}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="flex items-center justify-center"
+                >
+                  <div className="bg-background rounded-lg p-6 hover:shadow-lg transition-shadow duration-300 w-full h-32 flex items-center justify-center">
+                    <img 
+                      src={brand.logo} 
+                      alt={brand.name}
+                      className="max-h-16 max-w-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                    />
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
 
       <footer className="bg-secondary/80 border-t border-border text-white py-12">
