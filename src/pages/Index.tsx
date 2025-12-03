@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -98,15 +99,35 @@ const Index = () => {
       <main>
         <section id="home" className="relative py-20 md:py-32 bg-cover bg-center" style={{ backgroundImage: 'url(https://cdn.poehali.dev/files/5319ed4a-b22a-4490-9224-27e5db4ca3f8.png)' }}>
           <div className="container mx-auto px-4">
-            <div className="max-w-4xl">
-              <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            <motion.div 
+              className="max-w-4xl"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <motion.h2 
+                className="text-4xl md:text-6xl font-bold text-white mb-6"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
                 Профессиональный монтаж<br />слаботочных систем
-              </h2>
-              <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl">
+              </motion.h2>
+              <motion.p 
+                className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
                 Проектирование и установка систем видеонаблюдения, локальных сетей, 
                 структурированных кабельных систем и систем контроля доступа
-              </p>
-              <div className="flex flex-wrap gap-4">
+              </motion.p>
+              <motion.div 
+                className="flex flex-wrap gap-4"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
                 <Button size="lg" onClick={() => scrollToSection('services')} className="bg-primary hover:bg-primary/90">
                   Наши услуги
                   <Icon name="ArrowRight" size={20} className="ml-2" />
@@ -114,8 +135,8 @@ const Index = () => {
                 <Button size="lg" variant="outline" onClick={() => scrollToSection('contacts')} className="bg-background/50 border-primary text-foreground hover:bg-primary hover:text-primary-foreground">
                   Получить консультацию
                 </Button>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
           
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent"></div>
@@ -129,11 +150,18 @@ const Index = () => {
                 { number: '12', label: 'Лет опыта' },
                 { number: '200+', label: 'Клиентов' },
                 { number: '24/7', label: 'Поддержка' }
-              ].map((stat) => (
-                <div key={stat.label} className="hover-scale">
+              ].map((stat, index) => (
+                <motion.div 
+                  key={stat.label} 
+                  className="hover-scale"
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
                   <div className="text-4xl md:text-5xl font-bold text-primary mb-2">{stat.number}</div>
                   <div className="text-sm text-muted-foreground">{stat.label}</div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -149,18 +177,26 @@ const Index = () => {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {services.map((service) => (
-                <Card key={service.title} className="hover-scale transition-all duration-300 hover:shadow-lg border-2 hover:border-primary/50">
-                  <CardHeader>
-                    <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                      <Icon name={service.icon} size={28} className="text-primary" />
-                    </div>
-                    <CardTitle className="text-xl">{service.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription className="text-base">{service.description}</CardDescription>
-                  </CardContent>
-                </Card>
+              {services.map((service, index) => (
+                <motion.div
+                  key={service.title}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <Card className="hover-scale transition-all duration-300 hover:shadow-lg border-2 hover:border-primary/50 h-full">
+                    <CardHeader>
+                      <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                        <Icon name={service.icon} size={28} className="text-primary" />
+                      </div>
+                      <CardTitle className="text-xl">{service.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <CardDescription className="text-base">{service.description}</CardDescription>
+                    </CardContent>
+                  </Card>
+                </motion.div>
               ))}
             </div>
 
@@ -197,20 +233,28 @@ const Index = () => {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              {portfolio.map((project) => (
-                <Card key={project.title} className="overflow-hidden hover-scale transition-all duration-300 hover:shadow-xl">
-                  <div className="h-64 overflow-hidden">
-                    <img 
-                      src={project.image} 
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-                    />
-                  </div>
-                  <CardHeader>
-                    <CardTitle className="text-xl">{project.title}</CardTitle>
-                    <CardDescription className="text-base">{project.description}</CardDescription>
-                  </CardHeader>
-                </Card>
+              {portfolio.map((project, index) => (
+                <motion.div
+                  key={project.title}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.5, delay: index * 0.2 }}
+                >
+                  <Card className="overflow-hidden hover-scale transition-all duration-300 hover:shadow-xl h-full">
+                    <div className="h-64 overflow-hidden">
+                      <img 
+                        src={project.image} 
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                      />
+                    </div>
+                    <CardHeader>
+                      <CardTitle className="text-xl">{project.title}</CardTitle>
+                      <CardDescription className="text-base">{project.description}</CardDescription>
+                    </CardHeader>
+                  </Card>
+                </motion.div>
               ))}
             </div>
           </div>
