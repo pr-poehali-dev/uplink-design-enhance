@@ -35,7 +35,7 @@ const Index = () => {
     {
       title: 'Установка камер на частном доме',
       description: 'IP-камеры высокого разрешения с удаленным доступом',
-      image: 'https://cdn.poehali.dev/files/ee474d75-51b5-4982-8578-a147bdfe0dee.jpg'
+      image: 'https://cdn.poehali.dev/files/65fdee94-8b71-4353-a0e8-c901cc0f509d.jpg'
     },
     {
       title: 'Прокладка локальной сети в школе',
