@@ -17,6 +17,12 @@
         "rating": 5
       },
       "expectedStatus": 201
+    },
+    {
+      "name": "Delete review requires ID",
+      "method": "DELETE",
+      "path": "/",
+      "expectedStatus": 400
     }
   ]
 }

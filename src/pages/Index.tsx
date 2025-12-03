@@ -65,6 +65,22 @@ const Index = () => {
     }
   };
 
+  const handleDeleteReview = async (reviewId: number) => {
+    if (!confirm('Удалить этот отзыв?')) return;
+    
+    try {
+      const response = await fetch(`${API_URL}?id=${reviewId}`, {
+        method: 'DELETE',
+      });
+      
+      if (response.ok) {
+        setReviews(reviews.filter(review => review.id !== reviewId));
+      }
+    } catch (error) {
+      console.error('Error deleting review:', error);
+    }
+  };
+
   const services = [
     {
       icon: 'Camera',
@@ -550,7 +566,16 @@ const Index = () => {
                         <Icon key={i} name="Star" className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                       ))}
                     </div>
-                    <span className="text-xs text-muted-foreground">{review.date}</span>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs text-muted-foreground">{review.date}</span>
+                      <button
+                        onClick={() => handleDeleteReview(review.id)}
+                        className="text-red-500 hover:text-red-700 transition-colors"
+                        title="Удалить отзыв"
+                      >
+                        <Icon name="Trash2" className="w-4 h-4" />
+                      </button>
+                    </div>
                   </div>
                   <p className="text-muted-foreground mb-4 italic">"{review.text}"</p>
                   <div className="border-t border-border pt-4">
