@@ -33,19 +33,19 @@ const Index = () => {
 
   const portfolio = [
     {
-      title: 'Торговый центр "Европа"',
-      description: '120 IP-камер, система распознавания лиц',
-      image: 'https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/39f65802-f3bd-4478-bfd3-a7d2ea1805d4.jpg'
+      title: 'Установка камер на частном доме',
+      description: 'IP-камеры высокого разрешения с удаленным доступом',
+      image: 'https://cdn.poehali.dev/files/ee474d75-51b5-4982-8578-a147bdfe0dee.jpg'
     },
     {
-      title: 'Бизнес-центр "Престиж"',
-      description: 'ЛВС на 500 портов, СКУД с биометрией',
-      image: 'https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/150220d5-50b1-4a98-9b65-36daca75352f.jpg'
+      title: 'Прокладка локальной сети в школе',
+      description: 'Монтаж сетевых коммутаторов и прокладка кабельных линий',
+      image: 'https://cdn.poehali.dev/files/cdd98429-7c5f-4767-8207-883dff66bf19.jpg'
     },
     {
-      title: 'Производственный комплекс',
-      description: 'Комплексная СКС, видеонаблюдение 24/7',
-      image: 'https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/39f65802-f3bd-4478-bfd3-a7d2ea1805d4.jpg'
+      title: 'Прокладка локальной сети в офисном помещении',
+      description: 'Структурированная кабельная система с серверным шкафом',
+      image: 'https://cdn.poehali.dev/files/b79e04e5-a401-42ef-a231-fa831dcb62dd.jpg'
     }
   ];
 
@@ -263,9 +263,9 @@ const Index = () => {
                           <Icon name="Phone" size={24} className="text-primary" />
                         </div>
                         <div>
-                          <h3 className="font-semibold text-foreground mb-1">Телефон</h3>
-                          <p className="text-muted-foreground">+7 (999) 123-45-67</p>
-                          <p className="text-muted-foreground">+7 (999) 765-43-21</p>
+                          <h3 className="font-semibold text-foreground mb-1">Телефоны</h3>
+                          <p className="text-muted-foreground">+7 (949) 006-61-80</p>
+                          <p className="text-muted-foreground">+7 (949) 514-33-38</p>
                         </div>
                       </div>
                     </CardContent>
@@ -279,8 +279,7 @@ const Index = () => {
                         </div>
                         <div>
                           <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                          <p className="text-muted-foreground">info@uplink-ctrl.ru</p>
-                          <p className="text-muted-foreground">support@uplink-ctrl.ru</p>
+                          <p className="text-muted-foreground">uplink.control@mail.ru</p>
                         </div>
                       </div>
                     </CardContent>
@@ -294,8 +293,8 @@ const Index = () => {
                         </div>
                         <div>
                           <h3 className="font-semibold text-foreground mb-1">Адрес</h3>
-                          <p className="text-muted-foreground">г. Москва, ул. Примерная, д. 123</p>
-                          <p className="text-sm text-muted-foreground mt-1">Пн-Пт: 9:00 - 18:00</p>
+                          <p className="text-muted-foreground">г. Мариуполь</p>
+                          <p className="text-sm text-muted-foreground mt-1">9:00 - 18:00 без выходных</p>
                         </div>
                       </div>
                     </CardContent>
@@ -340,15 +339,16 @@ const Index = () => {
             <div>
               <h4 className="font-semibold mb-4">Контакты</h4>
               <ul className="space-y-2 text-sm text-white/80">
-                <li>+7 (999) 123-45-67</li>
-                <li>info@uplink-ctrl.ru</li>
-                <li>г. Москва, ул. Примерная, 123</li>
+                <li>+7 (949) 006-61-80</li>
+                <li>+7 (949) 514-33-38</li>
+                <li>uplink.control@mail.ru</li>
+                <li>г. Мариуполь</li>
               </ul>
             </div>
           </div>
 
           <div className="border-t border-white/20 pt-8 text-center text-sm text-white/60">
-            <p>&copy; 2024 Uplink Control. Все права защищены.</p>
+            <p>&copy; 2025 Uplink Control. Все права защищены.</p>
           </div>
         </div>
       </footer>
