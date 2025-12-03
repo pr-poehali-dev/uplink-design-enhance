@@ -1,0 +1,22 @@
+{
+  "tests": [
+    {
+      "name": "Get all reviews",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "Create new review",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "name": "Test User",
+        "company": "Test Company",
+        "text": "Great service!",
+        "rating": 5
+      },
+      "expectedStatus": 201
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -8,42 +8,60 @@ import Icon from '@/components/ui/icon';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
-  const [reviews, setReviews] = useState([
-    {
-      name: 'Алексей Морозов',
-      company: 'ООО "ТехноСтрой"',
-      text: 'Отличная работа! Установили видеонаблюдение в офисе за 2 дня. Качество оборудования и монтажа на высоте.',
-      rating: 5,
-      date: '15 ноября 2024'
-    },
-    {
-      name: 'Ирина Волкова',
-      company: 'Ресторан "Панорама"',
-      text: 'Профессиональный подход к делу. Система контроля доступа работает безупречно, персонал всегда на связи.',
-      rating: 5,
-      date: '28 октября 2024'
-    },
-    {
-      name: 'Дмитрий Соколов',
-      company: 'Складской комплекс "Логистик+"',
-      text: 'Организовали комплексную систему безопасности для нашего склада. Очень довольны результатом и сервисом.',
-      rating: 5,
-      date: '10 октября 2024'
-    }
-  ]);
+  const [reviews, setReviews] = useState<any[]>([]);
   const [newReview, setNewReview] = useState({
     name: '',
     company: '',
     text: '',
     rating: 5
   });
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmitReview = (e: React.FormEvent) => {
+  const API_URL = 'https://functions.poehali.dev/5a5e90b1-2c14-4f5f-98b1-7bc5c892b057';
+
+  useEffect(() => {
+    fetchReviews();
+  }, []);
+
+  const fetchReviews = async () => {
+    try {
+      setIsLoading(true);
+      const response = await fetch(API_URL);
+      if (response.ok) {
+        const data = await response.json();
+        setReviews(data);
+      }
+    } catch (error) {
+      console.error('Error fetching reviews:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleSubmitReview = async (e: React.FormEvent) => {
     e.preventDefault();
     if (newReview.name && newReview.text) {
-      const today = new Date().toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
-      setReviews([{ ...newReview, date: today }, ...reviews]);
-      setNewReview({ name: '', company: '', text: '', rating: 5 });
+      try {
+        setIsSubmitting(true);
+        const response = await fetch(API_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(newReview),
+        });
+        
+        if (response.ok) {
+          const savedReview = await response.json();
+          setReviews([savedReview, ...reviews]);
+          setNewReview({ name: '', company: '', text: '', rating: 5 });
+        }
+      } catch (error) {
+        console.error('Error submitting review:', error);
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -498,9 +516,9 @@ const Index = () => {
                       />
                     </div>
 
-                    <Button type="submit" className="w-full">
+                    <Button type="submit" className="w-full" disabled={isSubmitting}>
                       <Icon name="Send" className="w-4 h-4 mr-2" />
-                      Отправить отзыв
+                      {isSubmitting ? 'Отправка...' : 'Отправить отзыв'}
                     </Button>
                   </form>
                 </CardContent>
@@ -508,7 +526,16 @@ const Index = () => {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              {reviews.map((review, index) => (
+              {isLoading ? (
+                <div className="col-span-3 text-center py-12">
+                  <p className="text-muted-foreground">Загрузка отзывов...</p>
+                </div>
+              ) : reviews.length === 0 ? (
+                <div className="col-span-3 text-center py-12">
+                  <p className="text-muted-foreground">Пока нет отзывов. Будьте первым!</p>
+                </div>
+              ) : (
+                reviews.map((review, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 30 }}
@@ -531,7 +558,8 @@ const Index = () => {
                     {review.company && <p className="text-sm text-muted-foreground">{review.company}</p>}
                   </div>
                 </motion.div>
-              ))}
+              ))
+              )}
             </div>
           </div>
         </section>
