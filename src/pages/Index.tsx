@@ -8,6 +8,44 @@ import Icon from '@/components/ui/icon';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
+  const [reviews, setReviews] = useState([
+    {
+      name: 'Алексей Морозов',
+      company: 'ООО "ТехноСтрой"',
+      text: 'Отличная работа! Установили видеонаблюдение в офисе за 2 дня. Качество оборудования и монтажа на высоте.',
+      rating: 5,
+      date: '15 ноября 2024'
+    },
+    {
+      name: 'Ирина Волкова',
+      company: 'Ресторан "Панорама"',
+      text: 'Профессиональный подход к делу. Система контроля доступа работает безупречно, персонал всегда на связи.',
+      rating: 5,
+      date: '28 октября 2024'
+    },
+    {
+      name: 'Дмитрий Соколов',
+      company: 'Складской комплекс "Логистик+"',
+      text: 'Организовали комплексную систему безопасности для нашего склада. Очень довольны результатом и сервисом.',
+      rating: 5,
+      date: '10 октября 2024'
+    }
+  ]);
+  const [newReview, setNewReview] = useState({
+    name: '',
+    company: '',
+    text: '',
+    rating: 5
+  });
+
+  const handleSubmitReview = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (newReview.name && newReview.text) {
+      const today = new Date().toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+      setReviews([{ ...newReview, date: today }, ...reviews]);
+      setNewReview({ name: '', company: '', text: '', rating: 5 });
+    }
+  };
 
   const services = [
     {
@@ -394,48 +432,103 @@ const Index = () => {
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Отзывы наших клиентов</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Что говорят о нас компании, которые доверили нам свою безопасность
+                Поделитесь своим опытом работы с нами
               </p>
             </div>
 
+            <div className="max-w-2xl mx-auto mb-12">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Оставить отзыв</CardTitle>
+                  <CardDescription>Расскажите о вашем опыте сотрудничества</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <form onSubmit={handleSubmitReview} className="space-y-4">
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="text-sm font-medium text-foreground mb-2 block">Имя *</label>
+                        <Input
+                          value={newReview.name}
+                          onChange={(e) => setNewReview({ ...newReview, name: e.target.value })}
+                          placeholder="Ваше имя"
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label className="text-sm font-medium text-foreground mb-2 block">Компания</label>
+                        <Input
+                          value={newReview.company}
+                          onChange={(e) => setNewReview({ ...newReview, company: e.target.value })}
+                          placeholder="Название компании"
+                        />
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <label className="text-sm font-medium text-foreground mb-2 block">Оценка</label>
+                      <div className="flex gap-2">
+                        {[1, 2, 3, 4, 5].map((star) => (
+                          <button
+                            key={star}
+                            type="button"
+                            onClick={() => setNewReview({ ...newReview, rating: star })}
+                            className="focus:outline-none"
+                          >
+                            <Icon
+                              name="Star"
+                              className={`w-8 h-8 transition-colors ${
+                                star <= newReview.rating
+                                  ? 'fill-yellow-400 text-yellow-400'
+                                  : 'text-gray-300'
+                              }`}
+                            />
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="text-sm font-medium text-foreground mb-2 block">Отзыв *</label>
+                      <Textarea
+                        value={newReview.text}
+                        onChange={(e) => setNewReview({ ...newReview, text: e.target.value })}
+                        placeholder="Расскажите о вашем опыте работы с нами..."
+                        rows={4}
+                        required
+                      />
+                    </div>
+
+                    <Button type="submit" className="w-full">
+                      <Icon name="Send" className="w-4 h-4 mr-2" />
+                      Отправить отзыв
+                    </Button>
+                  </form>
+                </CardContent>
+              </Card>
+            </div>
+
             <div className="grid md:grid-cols-3 gap-8">
-              {[
-                {
-                  name: 'Алексей Морозов',
-                  company: 'ООО "ТехноСтрой"',
-                  text: 'Отличная работа! Установили видеонаблюдение в офисе за 2 дня. Качество оборудования и монтажа на высоте.',
-                  rating: 5
-                },
-                {
-                  name: 'Ирина Волкова',
-                  company: 'Ресторан "Панорама"',
-                  text: 'Профессиональный подход к делу. Система контроля доступа работает безупречно, персонал всегда на связи.',
-                  rating: 5
-                },
-                {
-                  name: 'Дмитрий Соколов',
-                  company: 'Складской комплекс "Логистик+"',
-                  text: 'Организовали комплексную систему безопасности для нашего склада. Очень довольны результатом и сервисом.',
-                  rating: 5
-                }
-              ].map((review, index) => (
+              {reviews.map((review, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.5, delay: index * 0.15 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="bg-card border border-border rounded-lg p-6 hover:shadow-lg transition-shadow duration-300"
                 >
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(review.rating)].map((_, i) => (
-                      <Icon key={i} name="Star" className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                    ))}
+                  <div className="flex justify-between items-start mb-4">
+                    <div className="flex gap-1">
+                      {[...Array(review.rating)].map((_, i) => (
+                        <Icon key={i} name="Star" className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                    <span className="text-xs text-muted-foreground">{review.date}</span>
                   </div>
-                  <p className="text-muted-foreground mb-6 italic">"{review.text}"</p>
+                  <p className="text-muted-foreground mb-4 italic">"{review.text}"</p>
                   <div className="border-t border-border pt-4">
                     <p className="font-semibold text-foreground">{review.name}</p>
-                    <p className="text-sm text-muted-foreground">{review.company}</p>
+                    {review.company && <p className="text-sm text-muted-foreground">{review.company}</p>}
                   </div>
                 </motion.div>
               ))}
