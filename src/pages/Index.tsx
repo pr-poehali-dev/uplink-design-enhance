@@ -8,7 +8,7 @@ import HeroSection from '@/components/sections/HeroSection';
 import ServicesSection from '@/components/sections/ServicesSection';
 import PortfolioSection from '@/components/sections/PortfolioSection';
 import ReviewsSection from '@/components/sections/ReviewsSection';
-import AdminButton from '@/components/AdminButton';
+
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -310,9 +310,6 @@ const Index = () => {
                   <span>9:00-18:00 без выходных</span>
                 </li>
               </ul>
-              <div className="mt-4">
-                <AdminButton />
-              </div>
             </div>
           </div>
           
