@@ -12,10 +12,48 @@ import AdminButton from '@/components/AdminButton';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
+  const [contactForm, setContactForm] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const scrollToSection = (section: string) => {
     setActiveSection(section);
     document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleContactSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!contactForm.name || (!contactForm.phone && !contactForm.email)) {
+      alert('Пожалуйста, заполните имя и хотя бы один контакт (телефон или email)');
+      return;
+    }
+
+    try {
+      setIsSubmitting(true);
+      const response = await fetch('https://functions.poehali.dev/a3039e93-74e9-40a0-bcfe-4577d89d6b06', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(contactForm),
+      });
+
+      if (response.ok) {
+        alert('Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.');
+        setContactForm({ name: '', phone: '', email: '', message: '' });
+      } else {
+        alert('Произошла ошибка при отправке. Пожалуйста, попробуйте позже или свяжитесь по телефону.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Произошла ошибка при отправке. Пожалуйста, попробуйте позже или свяжитесь по телефону.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -76,27 +114,48 @@ const Index = () => {
 
               <div className="grid md:grid-cols-2 gap-8">
                 <Card>
-                  <CardContent className="pt-6 space-y-4">
-                    <div>
-                      <label className="text-sm font-medium mb-2 block">Ваше имя</label>
-                      <Input placeholder="Иван Иванов" />
-                    </div>
-                    <div>
-                      <label className="text-sm font-medium mb-2 block">Телефон</label>
-                      <Input placeholder="+7 (___) ___-__-__" />
-                    </div>
-                    <div>
-                      <label className="text-sm font-medium mb-2 block">Email</label>
-                      <Input type="email" placeholder="example@mail.ru" />
-                    </div>
-                    <div>
-                      <label className="text-sm font-medium mb-2 block">Сообщение</label>
-                      <Textarea placeholder="Опишите ваш проект..." rows={4} />
-                    </div>
-                    <Button className="w-full" size="lg">
-                      Отправить заявку
-                      <Icon name="Send" size={18} className="ml-2" />
-                    </Button>
+                  <CardContent className="pt-6">
+                    <form onSubmit={handleContactSubmit} className="space-y-4">
+                      <div>
+                        <label className="text-sm font-medium mb-2 block">Ваше имя *</label>
+                        <Input 
+                          placeholder="Иван Иванов" 
+                          value={contactForm.name}
+                          onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label className="text-sm font-medium mb-2 block">Телефон</label>
+                        <Input 
+                          placeholder="+7 (___) ___-__-__" 
+                          value={contactForm.phone}
+                          onChange={(e) => setContactForm({ ...contactForm, phone: e.target.value })}
+                        />
+                      </div>
+                      <div>
+                        <label className="text-sm font-medium mb-2 block">Email</label>
+                        <Input 
+                          type="email" 
+                          placeholder="example@mail.ru" 
+                          value={contactForm.email}
+                          onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
+                        />
+                      </div>
+                      <div>
+                        <label className="text-sm font-medium mb-2 block">Сообщение</label>
+                        <Textarea 
+                          placeholder="Опишите ваш проект..." 
+                          rows={4} 
+                          value={contactForm.message}
+                          onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
+                        />
+                      </div>
+                      <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
+                        {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
+                        <Icon name="Send" size={18} className="ml-2" />
+                      </Button>
+                    </form>
                   </CardContent>
                 </Card>
 
