@@ -362,10 +362,10 @@ const Index = () => {
               {[
                 { name: 'Hikvision', logo: 'https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/c077ceaf-ec1e-498c-bd88-591609c493a5.jpg' },
                 { name: 'Dahua', logo: 'https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/c5940546-947f-41cb-b0a1-39805680b588.jpg' },
-                { name: 'Axis', logo: 'https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/022f8d90-f49f-4238-86f8-427453c18594.jpg' },
+                { name: 'Cabeus', logo: 'https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/b056b07a-d813-41ef-9f84-685737f5806a.jpg' },
                 { name: 'Cisco', logo: 'https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/f2bdef18-8bf8-4323-90ce-f7e69d70ddcc.jpg' },
                 { name: 'Ubiquiti', logo: 'https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/2a404191-fd39-43aa-88af-a855088b1bc1.jpg' },
-                { name: 'ZKTeco', logo: 'https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/2773b897-25a0-4434-93ff-14ab73f48c7c.jpg' }
+                { name: 'MikroTik', logo: 'https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/19af0433-118e-4685-b846-d50699996bb8.jpg' }
               ].map((brand, index) => (
                 <motion.div
                   key={brand.name}
@@ -375,11 +375,11 @@ const Index = () => {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="flex items-center justify-center"
                 >
-                  <div className="bg-background rounded-lg p-6 hover:shadow-lg transition-shadow duration-300 w-full h-32 flex items-center justify-center">
+                  <div className="rounded-lg p-4 hover:shadow-xl transition-all duration-300 w-full h-40 flex items-center justify-center">
                     <img 
                       src={brand.logo} 
                       alt={brand.name}
-                      className="max-h-16 max-w-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                      className="max-h-24 max-w-full object-contain hover:scale-110 transition-transform duration-300"
                     />
                   </div>
                 </motion.div>
