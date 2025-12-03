@@ -310,12 +310,14 @@ const Index = () => {
                   <span>9:00-18:00 без выходных</span>
                 </li>
               </ul>
+              <div className="mt-4">
+                <AdminButton />
+              </div>
             </div>
           </div>
           
-          <div className="border-t border-white/20 pt-6 flex justify-between items-center text-sm text-white/60">
+          <div className="border-t border-white/20 pt-6 text-center text-sm text-white/60">
             <p>&copy; 2025 Uplink Control. Все права защищены.</p>
-            <AdminButton />
           </div>
         </div>
       </footer>
