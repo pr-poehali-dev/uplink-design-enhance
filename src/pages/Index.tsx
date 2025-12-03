@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -19,41 +19,35 @@ const Index = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [botUsername, setBotUsername] = useState('');
+
+  useEffect(() => {
+    fetch('https://functions.poehali.dev/cf7ec4c9-16e1-4c20-833a-28733f221ac5')
+      .then(res => res.json())
+      .then(data => setBotUsername(data.username))
+      .catch(err => console.error('Error fetching bot username:', err));
+  }, []);
 
   const scrollToSection = (section: string) => {
     setActiveSection(section);
     document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const handleContactSubmit = async (e: React.FormEvent) => {
+  const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!contactForm.name || (!contactForm.phone && !contactForm.email)) {
-      alert('Пожалуйста, заполните имя и хотя бы один контакт (телефон или email)');
+    
+    if (!botUsername) {
+      alert('Telegram бот не настроен. Пожалуйста, свяжитесь с нами по телефону.');
       return;
     }
 
-    try {
-      setIsSubmitting(true);
-      const response = await fetch('https://functions.poehali.dev/a3039e93-74e9-40a0-bcfe-4577d89d6b06', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(contactForm),
-      });
-
-      if (response.ok) {
-        alert('Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.');
-        setContactForm({ name: '', phone: '', email: '', message: '' });
-      } else {
-        alert('Произошла ошибка при отправке. Пожалуйста, попробуйте позже или свяжитесь по телефону.');
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      alert('Произошла ошибка при отправке. Пожалуйста, попробуйте позже или свяжитесь по телефону.');
-    } finally {
-      setIsSubmitting(false);
-    }
+    const message = `Заявка от: ${contactForm.name}\n` +
+      (contactForm.phone ? `Телефон: ${contactForm.phone}\n` : '') +
+      (contactForm.email ? `Email: ${contactForm.email}\n` : '') +
+      (contactForm.message ? `Сообщение: ${contactForm.message}` : '');
+    
+    const telegramUrl = `https://t.me/${botUsername}?start=${encodeURIComponent(message)}`;
+    window.open(telegramUrl, '_blank');
   };
 
   return (
