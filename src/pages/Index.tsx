@@ -388,6 +388,60 @@ const Index = () => {
             </div>
           </div>
         </section>
+
+        <section className="py-16 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Отзывы наших клиентов</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Что говорят о нас компании, которые доверили нам свою безопасность
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                {
+                  name: 'Алексей Морозов',
+                  company: 'ООО "ТехноСтрой"',
+                  text: 'Отличная работа! Установили видеонаблюдение в офисе за 2 дня. Качество оборудования и монтажа на высоте.',
+                  rating: 5
+                },
+                {
+                  name: 'Ирина Волкова',
+                  company: 'Ресторан "Панорама"',
+                  text: 'Профессиональный подход к делу. Система контроля доступа работает безупречно, персонал всегда на связи.',
+                  rating: 5
+                },
+                {
+                  name: 'Дмитрий Соколов',
+                  company: 'Складской комплекс "Логистик+"',
+                  text: 'Организовали комплексную систему безопасности для нашего склада. Очень довольны результатом и сервисом.',
+                  rating: 5
+                }
+              ].map((review, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.5, delay: index * 0.15 }}
+                  className="bg-card border border-border rounded-lg p-6 hover:shadow-lg transition-shadow duration-300"
+                >
+                  <div className="flex gap-1 mb-4">
+                    {[...Array(review.rating)].map((_, i) => (
+                      <Icon key={i} name="Star" className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                  <p className="text-muted-foreground mb-6 italic">"{review.text}"</p>
+                  <div className="border-t border-border pt-4">
+                    <p className="font-semibold text-foreground">{review.name}</p>
+                    <p className="text-sm text-muted-foreground">{review.company}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
 
       <footer className="bg-secondary/80 border-t border-border text-white py-12">
