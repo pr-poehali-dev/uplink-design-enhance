@@ -24,7 +24,7 @@ const Index = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <img 
-                src="https://uplink-ctrl.ru/images/e0d6acdf-796a-af50-1ddf-14159e21e762.png" 
+                src="https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/7075a245-315e-4fee-97dc-8abce9e2a70c.jpg" 
                 alt="Uplink Control" 
                 className="h-16 w-auto"
               />
@@ -107,10 +107,15 @@ const Index = () => {
                           <Icon name="Phone" size={24} className="text-primary" />
                         </div>
                         <div>
-                          <h3 className="font-semibold text-lg mb-2">Телефон</h3>
-                          <a href="tel:+79997770000" className="text-primary hover:underline text-lg">
-                            +7 (999) 777-00-00
-                          </a>
+                          <h3 className="font-semibold text-lg mb-2">Телефоны</h3>
+                          <div className="space-y-1">
+                            <a href="tel:+79490066180" className="text-primary hover:underline text-lg block">
+                              +7 (949) 006-61-80
+                            </a>
+                            <a href="tel:+79495143338" className="text-primary hover:underline text-lg block">
+                              +7 (949) 514-33-38
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </CardContent>
@@ -124,8 +129,8 @@ const Index = () => {
                         </div>
                         <div>
                           <h3 className="font-semibold text-lg mb-2">Email</h3>
-                          <a href="mailto:info@uplink-ctrl.ru" className="text-primary hover:underline">
-                            info@uplink-ctrl.ru
+                          <a href="mailto:uplink.control@mail.ru" className="text-primary hover:underline">
+                            uplink.control@mail.ru
                           </a>
                         </div>
                       </div>
@@ -141,7 +146,7 @@ const Index = () => {
                         <div>
                           <h3 className="font-semibold text-lg mb-2">Адрес</h3>
                           <p className="text-muted-foreground">
-                            г. Москва, ул. Примерная, д. 1
+                            г. Мариуполь
                           </p>
                         </div>
                       </div>
@@ -198,7 +203,7 @@ const Index = () => {
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <img 
-                  src="https://uplink-ctrl.ru/images/e0d6acdf-796a-af50-1ddf-14159e21e762.png" 
+                  src="https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/7075a245-315e-4fee-97dc-8abce9e2a70c.jpg" 
                   alt="Uplink Control" 
                   className="h-12 w-auto"
                 />
@@ -208,7 +213,7 @@ const Index = () => {
                 </div>
               </div>
               <p className="text-white/70 text-sm">
-                Профессиональный монтаж слаботочных систем с 2012 года
+                Профессиональный монтаж слаботочных систем
               </p>
             </div>
             
@@ -225,28 +230,37 @@ const Index = () => {
             <div>
               <h4 className="font-semibold mb-4">Контакты</h4>
               <ul className="space-y-2 text-sm text-white/70">
-                <li className="flex items-center gap-2">
-                  <Icon name="Phone" size={16} />
-                  <a href="tel:+79997770000" className="hover:text-white transition-colors">
-                    +7 (999) 777-00-00
-                  </a>
+                <li className="flex items-start gap-2">
+                  <Icon name="Phone" size={16} className="mt-1" />
+                  <div className="space-y-1">
+                    <a href="tel:+79490066180" className="hover:text-white transition-colors block">
+                      +7 (949) 006-61-80
+                    </a>
+                    <a href="tel:+79495143338" className="hover:text-white transition-colors block">
+                      +7 (949) 514-33-38
+                    </a>
+                  </div>
                 </li>
                 <li className="flex items-center gap-2">
                   <Icon name="Mail" size={16} />
-                  <a href="mailto:info@uplink-ctrl.ru" className="hover:text-white transition-colors">
-                    info@uplink-ctrl.ru
+                  <a href="mailto:uplink.control@mail.ru" className="hover:text-white transition-colors">
+                    uplink.control@mail.ru
                   </a>
                 </li>
                 <li className="flex items-center gap-2">
                   <Icon name="MapPin" size={16} />
-                  <span>г. Москва, ул. Примерная, д. 1</span>
+                  <span>г. Мариуполь</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Icon name="Clock" size={16} />
+                  <span>9:00-18:00 без выходных</span>
                 </li>
               </ul>
             </div>
           </div>
           
           <div className="border-t border-white/20 pt-6 text-center text-sm text-white/60">
-            <p>&copy; 2024 Uplink Control. Все права защищены.</p>
+            <p>&copy; 2025 Uplink Control. Все права защищены.</p>
           </div>
         </div>
       </footer>

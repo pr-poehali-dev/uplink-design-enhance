@@ -16,8 +16,14 @@ const ReviewsSection = () => {
   });
   const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const API_URL = 'https://functions.poehali.dev/5a5e90b1-2c14-4f5f-98b1-7bc5c892b057';
+
+  useEffect(() => {
+    const adminStatus = sessionStorage.getItem('isAdmin') === 'true';
+    setIsAdmin(adminStatus);
+  }, []);
 
   useEffect(() => {
     fetchReviews();
@@ -64,7 +70,23 @@ const ReviewsSection = () => {
     }
   };
 
+  const handleAdminLogin = () => {
+    const password = prompt('Введите пароль администратора:');
+    if (password === 'admin2025') {
+      setIsAdmin(true);
+      sessionStorage.setItem('isAdmin', 'true');
+      alert('Вы вошли как администратор');
+    } else {
+      alert('Неверный пароль');
+    }
+  };
+
   const handleDeleteReview = async (reviewId: number) => {
+    if (!isAdmin) {
+      alert('Только администратор может удалять отзывы');
+      return;
+    }
+    
     if (!confirm('Удалить этот отзыв?')) return;
     
     try {
@@ -88,6 +110,12 @@ const ReviewsSection = () => {
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Поделитесь своим опытом работы с нами
           </p>
+          {!isAdmin && (
+            <Button onClick={handleAdminLogin} variant="ghost" size="sm" className="mt-4">
+              <Icon name="Lock" className="w-4 h-4 mr-2" />
+              Вход для администратора
+            </Button>
+          )}
         </div>
 
         <div className="max-w-2xl mx-auto mb-12">
