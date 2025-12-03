@@ -373,15 +373,16 @@ const Index = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="flex items-center justify-center"
+                  className="flex flex-col items-center justify-center gap-3"
                 >
-                  <div className="rounded-lg p-4 hover:shadow-xl transition-all duration-300 w-full h-40 flex items-center justify-center">
+                  <div className="p-4 hover:shadow-xl transition-all duration-300 w-full h-32 flex items-center justify-center">
                     <img 
                       src={brand.logo} 
                       alt={brand.name}
-                      className="max-h-24 max-w-full object-contain hover:scale-110 transition-transform duration-300"
+                      className="max-h-20 max-w-full object-contain hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]"
                     />
                   </div>
+                  <p className="text-sm font-medium text-foreground">{brand.name}</p>
                 </motion.div>
               ))}
             </div>
