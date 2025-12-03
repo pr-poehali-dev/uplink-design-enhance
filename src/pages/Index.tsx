@@ -49,6 +49,13 @@ const Index = () => {
     }
   };
 
+  const handleAdminLogout = () => {
+    setIsAdmin(false);
+    sessionStorage.removeItem('isAdmin');
+    alert('Вы вышли из режима администратора');
+    window.location.reload();
+  };
+
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -325,17 +332,24 @@ const Index = () => {
                   <Icon name="Clock" size={16} />
                   <span>9:00-18:00 без выходных</span>
                 </li>
-                {!isAdmin && (
-                  <li className="flex items-center gap-2">
-                    <Icon name="User" size={16} />
+                <li className="flex items-center gap-2">
+                  <Icon name="User" size={16} />
+                  {!isAdmin ? (
                     <button 
                       onClick={handleAdminLogin}
                       className="hover:text-white transition-colors text-left"
                     >
                       Служебный доступ
                     </button>
-                  </li>
-                )}
+                  ) : (
+                    <button 
+                      onClick={handleAdminLogout}
+                      className="hover:text-white transition-colors text-left"
+                    >
+                      Выход из панели
+                    </button>
+                  )}
+                </li>
               </ul>
             </div>
           </div>
