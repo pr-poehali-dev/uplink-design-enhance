@@ -8,6 +8,7 @@ import HeroSection from '@/components/sections/HeroSection';
 import ServicesSection from '@/components/sections/ServicesSection';
 import PortfolioSection from '@/components/sections/PortfolioSection';
 import ReviewsSection from '@/components/sections/ReviewsSection';
+import AdminButton from '@/components/AdminButton';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -24,7 +25,7 @@ const Index = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <img 
-                src="https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/7075a245-315e-4fee-97dc-8abce9e2a70c.jpg" 
+                src="https://cdn.poehali.dev/files/b4335080-f4a2-47fa-a639-5f34bb22a7bf.png" 
                 alt="Uplink Control" 
                 className="h-16 w-auto"
               />
@@ -203,7 +204,7 @@ const Index = () => {
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <img 
-                  src="https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/7075a245-315e-4fee-97dc-8abce9e2a70c.jpg" 
+                  src="https://cdn.poehali.dev/files/b4335080-f4a2-47fa-a639-5f34bb22a7bf.png" 
                   alt="Uplink Control" 
                   className="h-12 w-auto"
                 />
@@ -259,8 +260,9 @@ const Index = () => {
             </div>
           </div>
           
-          <div className="border-t border-white/20 pt-6 text-center text-sm text-white/60">
+          <div className="border-t border-white/20 pt-6 flex justify-between items-center text-sm text-white/60">
             <p>&copy; 2025 Uplink Control. Все права защищены.</p>
+            <AdminButton />
           </div>
         </div>
       </footer>

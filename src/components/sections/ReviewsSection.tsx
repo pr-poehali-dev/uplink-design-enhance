@@ -72,7 +72,7 @@ const ReviewsSection = () => {
 
   const handleAdminLogin = () => {
     const password = prompt('Введите пароль администратора:');
-    if (password === 'admin2025') {
+    if (password === 'fgkbyrLSI3!') {
       setIsAdmin(true);
       sessionStorage.setItem('isAdmin', 'true');
       alert('Вы вошли как администратор');
@@ -110,12 +110,6 @@ const ReviewsSection = () => {
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Поделитесь своим опытом работы с нами
           </p>
-          {!isAdmin && (
-            <Button onClick={handleAdminLogin} variant="ghost" size="sm" className="mt-4">
-              <Icon name="Lock" className="w-4 h-4 mr-2" />
-              Вход для администратора
-            </Button>
-          )}
         </div>
 
         <div className="max-w-2xl mx-auto mb-12">
