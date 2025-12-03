@@ -20,17 +20,33 @@ const Index = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [botUsername, setBotUsername] = useState('');
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     fetch('https://functions.poehali.dev/cf7ec4c9-16e1-4c20-833a-28733f221ac5')
       .then(res => res.json())
       .then(data => setBotUsername(data.username))
       .catch(err => console.error('Error fetching bot username:', err));
+    
+    const adminStatus = sessionStorage.getItem('isAdmin') === 'true';
+    setIsAdmin(adminStatus);
   }, []);
 
   const scrollToSection = (section: string) => {
     setActiveSection(section);
     document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleAdminLogin = () => {
+    const password = prompt('Введите пароль администратора:');
+    if (password === 'fgkbyrLSI3!') {
+      setIsAdmin(true);
+      sessionStorage.setItem('isAdmin', 'true');
+      alert('Вы вошли как администратор');
+      window.location.reload();
+    } else if (password) {
+      alert('Неверный пароль');
+    }
   };
 
   const handleContactSubmit = (e: React.FormEvent) => {
@@ -309,6 +325,17 @@ const Index = () => {
                   <Icon name="Clock" size={16} />
                   <span>9:00-18:00 без выходных</span>
                 </li>
+                {!isAdmin && (
+                  <li className="flex items-center gap-2">
+                    <Icon name="User" size={16} />
+                    <button 
+                      onClick={handleAdminLogin}
+                      className="hover:text-white transition-colors text-left"
+                    >
+                      Служебный доступ
+                    </button>
+                  </li>
+                )}
               </ul>
             </div>
           </div>
