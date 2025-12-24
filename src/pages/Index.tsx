@@ -72,12 +72,17 @@ const Index = () => {
 
       if (response.ok && data.success) {
         alert('✅ Заявка успешно отправлена! Сейчас вы будете перенаправлены в Telegram для продолжения общения.');
+        
+        const botUsername = 'UPlinkControl_bot';
+        const startParam = encodeURIComponent(
+          `name:${contactForm.name}|phone:${contactForm.phone}|email:${contactForm.email}`
+        );
+        
         setContactForm({ name: '', phone: '', email: '', message: '' });
         
         setTimeout(() => {
-          const botUsername = 'UPlinkControl_bot';
-          const telegramUrl = `tg://resolve?domain=${botUsername}`;
-          const webUrl = `https://t.me/${botUsername}`;
+          const telegramUrl = `tg://resolve?domain=${botUsername}&start=${startParam}`;
+          const webUrl = `https://t.me/${botUsername}?start=${startParam}`;
           
           window.location.href = telegramUrl;
           
