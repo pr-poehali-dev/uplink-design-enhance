@@ -43,6 +43,7 @@ def handler(event: dict, context) -> dict:
         
         bot_token = os.environ.get('TELEGRAM_BOT_TOKEN')
         chat_id = os.environ.get('TELEGRAM_CHAT_ID')
+        bot_username = os.environ.get('TELEGRAM_BOT_USERNAME', '')
         
         if not bot_token or not chat_id:
             return {
@@ -80,7 +81,11 @@ def handler(event: dict, context) -> dict:
                 return {
                     'statusCode': 200,
                     'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-                    'body': json.dumps({'success': True, 'message': 'Заявка отправлена!'})
+                    'body': json.dumps({
+                        'success': True, 
+                        'message': 'Заявка отправлена!',
+                        'bot_username': bot_username
+                    })
                 }
             else:
                 return {

@@ -71,8 +71,14 @@ const Index = () => {
       const data = await response.json();
 
       if (response.ok && data.success) {
-        alert('✅ Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
+        alert('✅ Заявка успешно отправлена! Сейчас вы будете перенаправлены в Telegram для продолжения общения.');
         setContactForm({ name: '', phone: '', email: '', message: '' });
+        
+        if (data.bot_username) {
+          setTimeout(() => {
+            window.open(`https://t.me/${data.bot_username}`, '_blank');
+          }, 1500);
+        }
       } else {
         alert('❌ Ошибка отправки заявки. Попробуйте позвонить нам по телефону.');
       }
