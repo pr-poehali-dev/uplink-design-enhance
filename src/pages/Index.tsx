@@ -19,15 +19,9 @@ const Index = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [botUsername, setBotUsername] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    fetch('https://functions.poehali.dev/cf7ec4c9-16e1-4c20-833a-28733f221ac5')
-      .then(res => res.json())
-      .then(data => setBotUsername(data.username))
-      .catch(err => console.error('Error fetching bot username:', err));
-    
     const adminStatus = sessionStorage.getItem('isAdmin') === 'true';
     setIsAdmin(adminStatus);
   }, []);
@@ -56,21 +50,38 @@ const Index = () => {
     window.location.reload();
   };
 
-  const handleContactSubmit = (e: React.FormEvent) => {
+  const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!botUsername) {
-      alert('Telegram бот не настроен. Пожалуйста, свяжитесь с нами по телефону.');
-      return;
-    }
+    setIsSubmitting(true);
 
-    const message = `Заявка от: ${contactForm.name}\n` +
-      (contactForm.phone ? `Телефон: ${contactForm.phone}\n` : '') +
-      (contactForm.email ? `Email: ${contactForm.email}\n` : '') +
-      (contactForm.message ? `Сообщение: ${contactForm.message}` : '');
-    
-    const telegramUrl = `https://t.me/${botUsername}?start=${encodeURIComponent(message)}`;
-    window.open(telegramUrl, '_blank');
+    try {
+      const response = await fetch('https://functions.poehali.dev/c9e09265-a4ea-4ebe-a4bd-caa5248dec68', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: contactForm.name,
+          phone: contactForm.phone,
+          email: contactForm.email,
+          message: contactForm.message
+        })
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        alert('✅ Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
+        setContactForm({ name: '', phone: '', email: '', message: '' });
+      } else {
+        alert('❌ Ошибка отправки заявки. Попробуйте позвонить нам по телефону.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('❌ Ошибка отправки заявки. Попробуйте позвонить нам по телефону.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

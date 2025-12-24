@@ -1,0 +1,33 @@
+{
+  "tests": [
+    {
+      "name": "Test sending contact form",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "name": "Иван Тестов",
+        "phone": "+79491234567",
+        "email": "test@example.com",
+        "message": "Тестовая заявка"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test missing name field",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "phone": "+79491234567"
+      },
+      "expectedStatus": 400,
+      "expectedBody": {
+        "error": "string"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
