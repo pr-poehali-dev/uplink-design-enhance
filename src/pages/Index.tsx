@@ -82,7 +82,7 @@ const Index = () => {
               <img 
                 src="https://cdn.poehali.dev/files/лого-orig-white.png" 
                 alt="Uplink Control" 
-                className="h-12 w-auto"
+                className="h-16 w-auto"
               />
               <div>
                 <h1 className="text-xl font-bold text-foreground">Uplink Control</h1>
@@ -280,9 +280,9 @@ const Index = () => {
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <img 
-                  src="https://cdn.poehali.dev/files/b4335080-f4a2-47fa-a639-5f34bb22a7bf.png" 
+                  src="https://cdn.poehali.dev/files/лого-orig-white.png" 
                   alt="Uplink Control" 
-                  className="h-12 w-auto"
+                  className="h-16 w-auto"
                 />
                 <div>
                   <h3 className="font-bold text-lg">Uplink Control</h3>
