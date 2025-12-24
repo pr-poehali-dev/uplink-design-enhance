@@ -82,7 +82,7 @@ const Index = () => {
               <img 
                 src="https://cdn.poehali.dev/files/лого-orig-white.png" 
                 alt="Uplink Control" 
-                className="h-18 w-auto"
+                className="h-12 w-auto"
               />
               <div>
                 <h1 className="text-xl font-bold text-foreground">Uplink Control</h1>
