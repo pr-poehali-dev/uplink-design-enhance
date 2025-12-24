@@ -76,7 +76,14 @@ const Index = () => {
         
         if (data.bot_username) {
           setTimeout(() => {
-            window.open(`https://t.me/${data.bot_username}`, '_blank');
+            const telegramUrl = `tg://resolve?domain=${data.bot_username}`;
+            const webUrl = `https://t.me/${data.bot_username}`;
+            
+            window.location.href = telegramUrl;
+            
+            setTimeout(() => {
+              window.open(webUrl, '_blank');
+            }, 500);
           }, 1500);
         }
       } else {
