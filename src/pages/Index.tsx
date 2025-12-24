@@ -80,9 +80,9 @@ const Index = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <img 
-                src="https://cdn.poehali.dev/files/b4335080-f4a2-47fa-a639-5f34bb22a7bf.png" 
+                src="https://cdn.poehali.dev/files/лого-orig-white.png" 
                 alt="Uplink Control" 
-                className="h-16 w-auto"
+                className="h-12 w-auto"
               />
               <div>
                 <h1 className="text-xl font-bold text-foreground">Uplink Control</h1>
