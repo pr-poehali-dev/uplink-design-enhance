@@ -74,18 +74,17 @@ const Index = () => {
         alert('✅ Заявка успешно отправлена! Сейчас вы будете перенаправлены в Telegram для продолжения общения.');
         setContactForm({ name: '', phone: '', email: '', message: '' });
         
-        if (data.bot_username) {
+        setTimeout(() => {
+          const botUsername = 'UPlinkControl_bot';
+          const telegramUrl = `tg://resolve?domain=${botUsername}`;
+          const webUrl = `https://t.me/${botUsername}`;
+          
+          window.location.href = telegramUrl;
+          
           setTimeout(() => {
-            const telegramUrl = `tg://resolve?domain=${data.bot_username}`;
-            const webUrl = `https://t.me/${data.bot_username}`;
-            
-            window.location.href = telegramUrl;
-            
-            setTimeout(() => {
-              window.open(webUrl, '_blank');
-            }, 500);
-          }, 1500);
-        }
+            window.open(webUrl, '_blank');
+          }, 500);
+        }, 1500);
       } else {
         alert('❌ Ошибка отправки заявки. Попробуйте позвонить нам по телефону.');
       }
