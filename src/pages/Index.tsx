@@ -15,7 +15,6 @@ const Index = () => {
   const [contactForm, setContactForm] = useState({
     name: '',
     phone: '',
-    email: '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -63,7 +62,6 @@ const Index = () => {
         body: JSON.stringify({
           name: contactForm.name,
           phone: contactForm.phone,
-          email: contactForm.email,
           message: contactForm.message
         })
       });
@@ -75,10 +73,10 @@ const Index = () => {
         
         const botUsername = 'UPlinkControl_bot';
         const startParam = encodeURIComponent(
-          `name:${contactForm.name}|phone:${contactForm.phone}|email:${contactForm.email}|message:${contactForm.message}`
+          `name:${contactForm.name}|phone:${contactForm.phone}|message:${contactForm.message}`
         );
         
-        setContactForm({ name: '', phone: '', email: '', message: '' });
+        setContactForm({ name: '', phone: '', message: '' });
         
         setTimeout(() => {
           const telegramUrl = `tg://resolve?domain=${botUsername}&start=${startParam}`;
@@ -153,7 +151,7 @@ const Index = () => {
               <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Свяжитесь с нами</h2>
                 <p className="text-lg text-muted-foreground">
-                  Оставьте заявку и получите консультацию специалиста
+                  Оставьте заявку для общения в мессенджере Telegram
                 </p>
               </div>
 
@@ -178,15 +176,7 @@ const Index = () => {
                           onChange={(e) => setContactForm({ ...contactForm, phone: e.target.value })}
                         />
                       </div>
-                      <div>
-                        <label className="text-sm font-medium mb-2 block">Email</label>
-                        <Input 
-                          type="email" 
-                          placeholder="example@mail.ru" 
-                          value={contactForm.email}
-                          onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
-                        />
-                      </div>
+
                       <div>
                         <label className="text-sm font-medium mb-2 block">Сообщение</label>
                         <Textarea 
@@ -196,9 +186,14 @@ const Index = () => {
                           onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
                         />
                       </div>
-                      <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
-                        {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
-                        <Icon name="Send" size={18} className="ml-2" />
+                      <Button 
+                        type="submit" 
+                        className="w-full bg-[#0088cc] hover:bg-[#0077b3] text-white" 
+                        size="lg" 
+                        disabled={isSubmitting}
+                      >
+                        <Icon name="Send" size={18} className="mr-2" />
+                        {isSubmitting ? 'Отправка...' : 'Перейти в Telegram'}
                       </Button>
                     </form>
                   </CardContent>
