@@ -75,7 +75,7 @@ const Index = () => {
         
         const botUsername = 'UPlinkControl_bot';
         const startParam = encodeURIComponent(
-          `name:${contactForm.name}|phone:${contactForm.phone}|email:${contactForm.email}`
+          `name:${contactForm.name}|phone:${contactForm.phone}|email:${contactForm.email}|message:${contactForm.message}`
         );
         
         setContactForm({ name: '', phone: '', email: '', message: '' });
