@@ -12,6 +12,29 @@ import ReviewsSection from '@/components/sections/ReviewsSection';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['home', 'services', 'pricing', 'portfolio', 'reviews', 'contacts'];
+      const scrollPosition = window.scrollY + 200;
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const offsetTop = element.offsetTop;
+          const offsetBottom = offsetTop + element.offsetHeight;
+
+          if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   const [contactForm, setContactForm] = useState({
     name: '',
     phone: '',
@@ -117,17 +140,19 @@ const Index = () => {
             </div>
             
             <nav className="hidden md:flex gap-6">
-              {['home', 'services', 'portfolio', 'contacts'].map((section) => (
+              {['home', 'services', 'pricing', 'portfolio', 'reviews', 'contacts'].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
-                  className={`text-sm font-medium transition-colors hover:text-primary ${
-                    activeSection === section ? 'text-primary' : 'text-foreground'
+                  className={`text-sm font-medium transition-colors hover:text-[#ff6b35] ${
+                    activeSection === section ? 'text-[#ff6b35]' : 'text-foreground'
                   }`}
                 >
                   {section === 'home' && 'Главная'}
                   {section === 'services' && 'Услуги'}
+                  {section === 'pricing' && 'Стоимость'}
                   {section === 'portfolio' && 'Портфолио'}
+                  {section === 'reviews' && 'Отзывы'}
                   {section === 'contacts' && 'Контакты'}
                 </button>
               ))}
@@ -162,182 +187,229 @@ const Index = () => {
                 </div>
 
                 <CardContent className="p-8">
-                  <div className="grid md:grid-cols-2 gap-6 mb-8">
-                    <div className="flex justify-center">
+                  <div className="space-y-6 mb-8">
+                    <div className="flex justify-center w-full">
                       <img 
                         src="https://cdn.poehali.dev/files/4-кам-без-фона.png" 
                         alt="4 IP-камеры HiWatch"
-                        className="w-full max-w-md object-contain"
+                        className="w-full max-w-4xl object-contain"
                       />
                     </div>
-                    <div className="flex justify-center">
-                      <img 
-                        src="https://cdn.poehali.dev/files/регик.png" 
-                        alt="IP-видеорегистратор HiWatch"
-                        className="w-full max-w-xs object-contain"
-                      />
+                    
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="flex justify-center">
+                        <img 
+                          src="https://cdn.poehali.dev/files/регик.png" 
+                          alt="IP-видеорегистратор HiWatch"
+                          className="w-full max-w-sm object-contain"
+                        />
+                      </div>
+                      <div className="flex justify-center">
+                        <img 
+                          src="https://cdn.poehali.dev/files/HDD.png" 
+                          alt="Жёсткий диск 2TB WD Purple"
+                          className="w-full max-w-sm object-contain"
+                        />
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="grid md:grid-cols-2 gap-6 mb-8">
-                    <div className="flex justify-center">
-                      <img 
-                        src="https://cdn.poehali.dev/files/HDD.png" 
-                        alt="Жёсткий диск 2TB WD Purple"
-                        className="w-full max-w-xs object-contain"
-                      />
-                    </div>
-                    <div className="flex justify-center">
+                    <div className="flex justify-center w-full">
                       <img 
                         src="https://cdn.poehali.dev/files/Свитч.png" 
                         alt="PoE-свитч"
-                        className="w-full max-w-md object-contain"
+                        className="w-full max-w-3xl object-contain"
                       />
                     </div>
                   </div>
 
                   <div className="bg-muted/30 rounded-lg p-6 mb-6">
-                    <h4 className="text-xl font-bold text-foreground mb-4 text-center">Что входит в базовый комплект</h4>
+                    <h4 className="text-xl font-bold text-foreground mb-6 text-center">Комплектация базового пакета</h4>
                     
                     <div className="space-y-4">
                       <div className="border-l-4 border-primary pl-4">
-                        <h5 className="font-semibold text-foreground mb-2">📦 1. IP-камеры — 4 шт.</h5>
-                        <ul className="space-y-1 text-sm text-muted-foreground">
-                          <li>✔️ Уличные</li>
-                          <li>✔️ Разрешение 4 МП</li>
-                          <li>✔️ Поддержка IR-подсветки для ночной съемки</li>
-                          <li>✔️ Корпуса с защитой от влаги/пыли IP67</li>
+                        <div className="flex items-start gap-3 mb-2">
+                          <Icon name="Package" className="text-primary mt-1" size={20} />
+                          <h5 className="font-semibold text-foreground">IP-камеры — 4 шт.</h5>
+                        </div>
+                        <ul className="space-y-1 text-sm text-muted-foreground ml-8">
+                          <li className="flex items-start gap-2"><Icon name="Check" size={16} className="text-primary mt-0.5" /> Уличного исполнения</li>
+                          <li className="flex items-start gap-2"><Icon name="Check" size={16} className="text-primary mt-0.5" /> Разрешение 4 МП</li>
+                          <li className="flex items-start gap-2"><Icon name="Check" size={16} className="text-primary mt-0.5" /> Инфракрасная подсветка для ночной съемки</li>
+                          <li className="flex items-start gap-2"><Icon name="Check" size={16} className="text-primary mt-0.5" /> Класс защиты IP67 (пыле- и влагозащита)</li>
                         </ul>
                       </div>
 
                       <div className="border-l-4 border-primary pl-4">
-                        <h5 className="font-semibold text-foreground mb-2">📟 2. IP-видеорегистратор (NVR) на 4 канала</h5>
-                        <ul className="space-y-1 text-sm text-muted-foreground">
-                          <li>✔️ Запись, просмотр в реальном времени, удаленный доступ</li>
-                          <li>✔️ HDMI/VGA выход для монитора</li>
+                        <div className="flex items-start gap-3 mb-2">
+                          <Icon name="Monitor" className="text-primary mt-1" size={20} />
+                          <h5 className="font-semibold text-foreground">IP-видеорегистратор (NVR) на 4 канала</h5>
+                        </div>
+                        <ul className="space-y-1 text-sm text-muted-foreground ml-8">
+                          <li className="flex items-start gap-2"><Icon name="Check" size={16} className="text-primary mt-0.5" /> Запись и просмотр в реальном времени</li>
+                          <li className="flex items-start gap-2"><Icon name="Check" size={16} className="text-primary mt-0.5" /> Удаленный доступ через интернет</li>
+                          <li className="flex items-start gap-2"><Icon name="Check" size={16} className="text-primary mt-0.5" /> HDMI/VGA выходы для подключения монитора</li>
                         </ul>
                       </div>
 
                       <div className="border-l-4 border-primary pl-4">
-                        <h5 className="font-semibold text-foreground mb-2">💾 3. Жёсткий диск HDD — 2 TB</h5>
-                        <ul className="space-y-1 text-sm text-muted-foreground">
-                          <li>✔️ Специальный для видеонаблюдения (SATA)</li>
-                          <li>✔️ Объём 2 ТБ — хранение записей до месяца (зависит от качества записи)</li>
+                        <div className="flex items-start gap-3 mb-2">
+                          <Icon name="HardDrive" className="text-primary mt-1" size={20} />
+                          <h5 className="font-semibold text-foreground">Жёсткий диск HDD — 2 TB</h5>
+                        </div>
+                        <ul className="space-y-1 text-sm text-muted-foreground ml-8">
+                          <li className="flex items-start gap-2"><Icon name="Check" size={16} className="text-primary mt-0.5" /> Специализированный накопитель для систем видеонаблюдения</li>
+                          <li className="flex items-start gap-2"><Icon name="Check" size={16} className="text-primary mt-0.5" /> Объём 2 ТБ (хранение архива до 30 дней)</li>
                         </ul>
                       </div>
 
                       <div className="border-l-4 border-primary pl-4">
-                        <h5 className="font-semibold text-foreground mb-2">🔌 4. PoE-свитч</h5>
-                        <ul className="space-y-1 text-sm text-muted-foreground">
-                          <li>✔️ 4 PoE порта (питание камер + передача данных)</li>
-                          <li>✔️ Мощность PoE под камеры</li>
-                          <li>✔️ Коммутатор для подключения камер к сети</li>
+                        <div className="flex items-start gap-3 mb-2">
+                          <Icon name="Network" className="text-primary mt-1" size={20} />
+                          <h5 className="font-semibold text-foreground">PoE-коммутатор (свитч)</h5>
+                        </div>
+                        <ul className="space-y-1 text-sm text-muted-foreground ml-8">
+                          <li className="flex items-start gap-2"><Icon name="Check" size={16} className="text-primary mt-0.5" /> 4 порта PoE (питание + передача данных)</li>
+                          <li className="flex items-start gap-2"><Icon name="Check" size={16} className="text-primary mt-0.5" /> Централизованное питание камер по сетевому кабелю</li>
                         </ul>
                       </div>
 
                       <div className="border-l-4 border-primary pl-4">
-                        <h5 className="font-semibold text-foreground mb-2">🛠 5. Кабель — 80 метров</h5>
-                        <ul className="space-y-1 text-sm text-muted-foreground">
-                          <li>✔️ Кабель витая пара (Cat5e или Cat6)</li>
-                          <li>✔️ Для подключения оконечных камер к PoE-свитчу</li>
+                        <div className="flex items-start gap-3 mb-2">
+                          <Icon name="Cable" className="text-primary mt-1" size={20} />
+                          <h5 className="font-semibold text-foreground">Сетевой кабель — 80 метров</h5>
+                        </div>
+                        <ul className="space-y-1 text-sm text-muted-foreground ml-8">
+                          <li className="flex items-start gap-2"><Icon name="Check" size={16} className="text-primary mt-0.5" /> Витая пара категории Cat5e или Cat6</li>
+                          <li className="flex items-start gap-2"><Icon name="Check" size={16} className="text-primary mt-0.5" /> Для подключения камер к коммутатору</li>
                         </ul>
                       </div>
 
                       <div className="border-l-4 border-primary pl-4">
-                        <h5 className="font-semibold text-foreground mb-2">🔧 6. Монтажные коробки</h5>
-                        <ul className="space-y-1 text-sm text-muted-foreground">
-                          <li>✔️ Для аккуратной прокладки и защиты кабелей</li>
+                        <div className="flex items-start gap-3 mb-2">
+                          <Icon name="Box" className="text-primary mt-1" size={20} />
+                          <h5 className="font-semibold text-foreground">Монтажные материалы</h5>
+                        </div>
+                        <ul className="space-y-1 text-sm text-muted-foreground ml-8">
+                          <li className="flex items-start gap-2"><Icon name="Check" size={16} className="text-primary mt-0.5" /> Кабель-каналы для защиты и эстетичной прокладки кабелей</li>
                         </ul>
                       </div>
 
                       <div className="border-l-4 border-primary pl-4">
-                        <h5 className="font-semibold text-foreground mb-2">🧰 7. Работы по монтажу</h5>
-                        <p className="text-sm text-muted-foreground mb-2">Включает:</p>
-                        <ul className="space-y-1 text-sm text-muted-foreground">
-                          <li>🔹 Разметку и установку камер на места</li>
-                          <li>🔹 Прокладку кабеля (80 м)</li>
-                          <li>🔹 Установку короба/креплений</li>
-                          <li>🔹 Подключение кабелей к PoE-свитчу</li>
+                        <div className="flex items-start gap-3 mb-2">
+                          <Icon name="Wrench" className="text-primary mt-1" size={20} />
+                          <h5 className="font-semibold text-foreground">Монтажные работы</h5>
+                        </div>
+                        <p className="text-sm text-muted-foreground mb-2 ml-8">Включает:</p>
+                        <ul className="space-y-1 text-sm text-muted-foreground ml-8">
+                          <li className="flex items-start gap-2"><Icon name="Dot" size={16} className="text-primary mt-0.5" /> Проектирование и разметка точек установки</li>
+                          <li className="flex items-start gap-2"><Icon name="Dot" size={16} className="text-primary mt-0.5" /> Монтаж камер на объекте</li>
+                          <li className="flex items-start gap-2"><Icon name="Dot" size={16} className="text-primary mt-0.5" /> Прокладка кабельных линий (80 м)</li>
+                          <li className="flex items-start gap-2"><Icon name="Dot" size={16} className="text-primary mt-0.5" /> Установка кабель-каналов и креплений</li>
+                          <li className="flex items-start gap-2"><Icon name="Dot" size={16} className="text-primary mt-0.5" /> Коммутация оборудования</li>
                         </ul>
                       </div>
 
                       <div className="border-l-4 border-primary pl-4">
-                        <h5 className="font-semibold text-foreground mb-2">⚙️ 8. Настройка системы</h5>
-                        <ul className="space-y-1 text-sm text-muted-foreground">
-                          <li>✔️ Настройка NVR (каналы, запись, расписание)</li>
-                          <li>✔️ Настройка сетевых параметров</li>
-                          <li>✔️ Веб/мобильный доступ (приложение/клиент)</li>
-                          <li>✔️ Тестирование работы камер, корректировки углов обзора</li>
+                        <div className="flex items-start gap-3 mb-2">
+                          <Icon name="Settings" className="text-primary mt-1" size={20} />
+                          <h5 className="font-semibold text-foreground">Настройка и конфигурация системы</h5>
+                        </div>
+                        <ul className="space-y-1 text-sm text-muted-foreground ml-8">
+                          <li className="flex items-start gap-2"><Icon name="Check" size={16} className="text-primary mt-0.5" /> Настройка видеорегистратора (каналы, запись, расписание)</li>
+                          <li className="flex items-start gap-2"><Icon name="Check" size={16} className="text-primary mt-0.5" /> Конфигурация сетевых параметров</li>
+                          <li className="flex items-start gap-2"><Icon name="Check" size={16} className="text-primary mt-0.5" /> Настройка удаленного доступа (веб-интерфейс, мобильное приложение)</li>
+                          <li className="flex items-start gap-2"><Icon name="Check" size={16} className="text-primary mt-0.5" /> Калибровка углов обзора камер</li>
                         </ul>
                       </div>
 
                       <div className="border-l-4 border-primary pl-4">
-                        <h5 className="font-semibold text-foreground mb-2">🖥 9. Тестирование и инструкции</h5>
-                        <ul className="space-y-1 text-sm text-muted-foreground">
-                          <li>✔️ Проверка стабильности записи</li>
-                          <li>✔️ Проверка качества изображения</li>
-                          <li>✔️ Инструктаж по просмотру и управлению</li>
+                        <div className="flex items-start gap-3 mb-2">
+                          <Icon name="CheckCircle" className="text-primary mt-1" size={20} />
+                          <h5 className="font-semibold text-foreground">Пусконаладочные работы и инструктаж</h5>
+                        </div>
+                        <ul className="space-y-1 text-sm text-muted-foreground ml-8">
+                          <li className="flex items-start gap-2"><Icon name="Check" size={16} className="text-primary mt-0.5" /> Комплексное тестирование системы</li>
+                          <li className="flex items-start gap-2"><Icon name="Check" size={16} className="text-primary mt-0.5" /> Проверка качества видеозаписи</li>
+                          <li className="flex items-start gap-2"><Icon name="Check" size={16} className="text-primary mt-0.5" /> Обучение работе с системой видеонаблюдения</li>
                         </ul>
                       </div>
                     </div>
                   </div>
 
                   <div className="bg-gradient-to-br from-accent/20 to-accent/5 rounded-lg p-6 border border-accent/20">
-                    <h4 className="text-xl font-bold text-foreground mb-4">💰 Цены на установку видеонаблюдения</h4>
+                    <div className="flex items-center gap-3 mb-4">
+                      <Icon name="DollarSign" className="text-primary" size={24} />
+                      <h4 className="text-xl font-bold text-foreground">Ценообразование</h4>
+                    </div>
                     
                     <p className="text-muted-foreground mb-4">
                       Мы предлагаем профессиональную установку систем видеонаблюдения с прозрачным и обоснованным ценообразованием.
-                      Стартовая цена рассчитана на базовый комплект из 4 камер видеонаблюдения — оптимальное решение для частного дома 🏠.
+                      Представленная стоимость рассчитана на базовый комплект из 4 камер — оптимальное решение для частного дома.
                     </p>
 
                     <p className="text-muted-foreground mb-3">
-                      Обращаем ваше внимание, что итоговая стоимость проекта формируется индивидуально и может изменяться в зависимости от требований заказчика, а именно:
+                      Итоговая стоимость проекта формируется индивидуально и зависит от следующих факторов:
                     </p>
 
                     <ul className="space-y-2 mb-4 text-muted-foreground">
-                      <li className="flex items-start gap-2">
-                        <span className="text-primary mt-1">📷</span>
-                        <span>типа и технических характеристик камер</span>
+                      <li className="flex items-start gap-3">
+                        <Icon name="Camera" className="text-primary mt-1" size={18} />
+                        <span>Тип и технические характеристики камер</span>
                       </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-primary mt-1">🏗</span>
-                        <span>особенностей объекта и сложности монтажных работ</span>
+                      <li className="flex items-start gap-3">
+                        <Icon name="Building" className="text-primary mt-1" size={18} />
+                        <span>Особенности объекта и сложность монтажных работ</span>
                       </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-primary mt-1">📏</span>
-                        <span>длины кабельных трасс</span>
+                      <li className="flex items-start gap-3">
+                        <Icon name="Ruler" className="text-primary mt-1" size={18} />
+                        <span>Протяженность кабельных трасс</span>
                       </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-primary mt-1">⚙️</span>
-                        <span>необходимости дополнительного оборудования и расширенных настроек</span>
+                      <li className="flex items-start gap-3">
+                        <Icon name="Settings" className="text-primary mt-1" size={18} />
+                        <span>Необходимость дополнительного оборудования и расширенных настроек</span>
                       </li>
                     </ul>
 
                     <div className="bg-background rounded-lg p-4 mb-4">
-                      <p className="font-semibold text-foreground mb-2">Для вашего удобства мы предоставляем:</p>
-                      <ul className="space-y-1 text-muted-foreground">
-                        <li>✅ Бесплатный выезд специалиста</li>
-                        <li>✅ Бесплатный замер и консультацию</li>
+                      <p className="font-semibold text-foreground mb-3">Для вашего удобства мы предоставляем:</p>
+                      <ul className="space-y-2 text-muted-foreground">
+                        <li className="flex items-start gap-2">
+                          <Icon name="Check" size={18} className="text-primary mt-0.5" />
+                          <span>Бесплатный выезд специалиста</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <Icon name="Check" size={18} className="text-primary mt-0.5" />
+                          <span>Бесплатные замеры и консультации</span>
+                        </li>
                       </ul>
-                      <p className="text-sm text-muted-foreground mt-2">
-                        — вы заранее будете понимать стоимость и состав работ, без скрытых платежей.
+                      <p className="text-sm text-muted-foreground mt-3">
+                        Вы заранее будете понимать полную стоимость и состав работ без скрытых платежей.
                       </p>
                     </div>
 
                     <div className="bg-primary/10 rounded-lg p-4 border-2 border-primary/30">
-                      <h5 className="text-lg font-bold text-primary mb-2">🎁 Специальная акция</h5>
+                      <div className="flex items-center gap-2 mb-2">
+                        <Icon name="Gift" className="text-primary" size={20} />
+                        <h5 className="text-lg font-bold text-primary">Специальная акция</h5>
+                      </div>
                       <p className="text-foreground font-semibold mb-2">
                         Воспользуйтесь выгодным предложением:<br />
-                        каждая 5-я камера — в подарок!
+                        каждая 5-я камера в подарок!
                       </p>
-                      <p className="text-sm text-muted-foreground">
-                        ℹ️ Важно: в рамках акции предоставляется только камера. Работы по её установке, подключению, настройке и сопутствующие материалы оплачиваются отдельно.
-                      </p>
+                      <div className="flex items-start gap-2 mt-3">
+                        <Icon name="Info" className="text-muted-foreground mt-0.5" size={16} />
+                        <p className="text-sm text-muted-foreground">
+                          В рамках акции предоставляется только оборудование. Работы по установке, подключению, настройке и расходные материалы оплачиваются дополнительно.
+                        </p>
+                      </div>
                     </div>
 
-                    <p className="text-muted-foreground mt-4">
-                      📞 Свяжитесь с нами, и мы подберём надёжное решение по видеонаблюдению, полностью соответствующее вашим задачам и бюджету.
-                    </p>
+                    <div className="flex items-start gap-2 text-muted-foreground mt-4">
+                      <Icon name="Phone" className="text-primary mt-0.5" size={18} />
+                      <p>
+                        Свяжитесь с нами, и мы разработаем надёжное решение по видеонаблюдению, полностью соответствующее вашим задачам и бюджету.
+                      </p>
+                    </div>
                   </div>
 
                   <div className="text-center mt-6">
