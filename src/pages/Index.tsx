@@ -143,6 +143,219 @@ const Index = () => {
       <main>
         <HeroSection scrollToSection={scrollToSection} />
         <ServicesSection />
+
+        <section id="pricing" className="py-20 bg-gradient-to-br from-primary/5 to-background">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Стоимость</h2>
+              <p className="text-lg text-muted-foreground">
+                Базовый комплект видеонаблюдения для частного дома
+              </p>
+            </div>
+
+            <div className="max-w-5xl mx-auto">
+              <Card className="mb-8 overflow-hidden border-2 border-primary/20">
+                <div className="bg-gradient-to-r from-primary/10 to-primary/5 p-8 text-center border-b border-primary/20">
+                  <h3 className="text-2xl font-bold text-foreground mb-2">Базовый комплект видеонаблюдения</h3>
+                  <div className="text-5xl font-bold text-primary mb-2">79 990 ₽</div>
+                  <p className="text-muted-foreground">Под ключ — всё включено</p>
+                </div>
+
+                <CardContent className="p-8">
+                  <div className="grid md:grid-cols-2 gap-6 mb-8">
+                    <div className="flex justify-center">
+                      <img 
+                        src="https://cdn.poehali.dev/files/4-кам-без-фона.png" 
+                        alt="4 IP-камеры HiWatch"
+                        className="w-full max-w-md object-contain"
+                      />
+                    </div>
+                    <div className="flex justify-center">
+                      <img 
+                        src="https://cdn.poehali.dev/files/регик.png" 
+                        alt="IP-видеорегистратор HiWatch"
+                        className="w-full max-w-xs object-contain"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-6 mb-8">
+                    <div className="flex justify-center">
+                      <img 
+                        src="https://cdn.poehali.dev/files/HDD.png" 
+                        alt="Жёсткий диск 2TB WD Purple"
+                        className="w-full max-w-xs object-contain"
+                      />
+                    </div>
+                    <div className="flex justify-center">
+                      <img 
+                        src="https://cdn.poehali.dev/files/Свитч.png" 
+                        alt="PoE-свитч"
+                        className="w-full max-w-md object-contain"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="bg-muted/30 rounded-lg p-6 mb-6">
+                    <h4 className="text-xl font-bold text-foreground mb-4 text-center">Что входит в базовый комплект</h4>
+                    
+                    <div className="space-y-4">
+                      <div className="border-l-4 border-primary pl-4">
+                        <h5 className="font-semibold text-foreground mb-2">📦 1. IP-камеры — 4 шт.</h5>
+                        <ul className="space-y-1 text-sm text-muted-foreground">
+                          <li>✔️ Уличные</li>
+                          <li>✔️ Разрешение 4 МП</li>
+                          <li>✔️ Поддержка IR-подсветки для ночной съемки</li>
+                          <li>✔️ Корпуса с защитой от влаги/пыли IP67</li>
+                        </ul>
+                      </div>
+
+                      <div className="border-l-4 border-primary pl-4">
+                        <h5 className="font-semibold text-foreground mb-2">📟 2. IP-видеорегистратор (NVR) на 4 канала</h5>
+                        <ul className="space-y-1 text-sm text-muted-foreground">
+                          <li>✔️ Запись, просмотр в реальном времени, удаленный доступ</li>
+                          <li>✔️ HDMI/VGA выход для монитора</li>
+                        </ul>
+                      </div>
+
+                      <div className="border-l-4 border-primary pl-4">
+                        <h5 className="font-semibold text-foreground mb-2">💾 3. Жёсткий диск HDD — 2 TB</h5>
+                        <ul className="space-y-1 text-sm text-muted-foreground">
+                          <li>✔️ Специальный для видеонаблюдения (SATA)</li>
+                          <li>✔️ Объём 2 ТБ — хранение записей до месяца (зависит от качества записи)</li>
+                        </ul>
+                      </div>
+
+                      <div className="border-l-4 border-primary pl-4">
+                        <h5 className="font-semibold text-foreground mb-2">🔌 4. PoE-свитч</h5>
+                        <ul className="space-y-1 text-sm text-muted-foreground">
+                          <li>✔️ 4 PoE порта (питание камер + передача данных)</li>
+                          <li>✔️ Мощность PoE под камеры</li>
+                          <li>✔️ Коммутатор для подключения камер к сети</li>
+                        </ul>
+                      </div>
+
+                      <div className="border-l-4 border-primary pl-4">
+                        <h5 className="font-semibold text-foreground mb-2">🛠 5. Кабель — 80 метров</h5>
+                        <ul className="space-y-1 text-sm text-muted-foreground">
+                          <li>✔️ Кабель витая пара (Cat5e или Cat6)</li>
+                          <li>✔️ Для подключения оконечных камер к PoE-свитчу</li>
+                        </ul>
+                      </div>
+
+                      <div className="border-l-4 border-primary pl-4">
+                        <h5 className="font-semibold text-foreground mb-2">🔧 6. Монтажные коробки</h5>
+                        <ul className="space-y-1 text-sm text-muted-foreground">
+                          <li>✔️ Для аккуратной прокладки и защиты кабелей</li>
+                        </ul>
+                      </div>
+
+                      <div className="border-l-4 border-primary pl-4">
+                        <h5 className="font-semibold text-foreground mb-2">🧰 7. Работы по монтажу</h5>
+                        <p className="text-sm text-muted-foreground mb-2">Включает:</p>
+                        <ul className="space-y-1 text-sm text-muted-foreground">
+                          <li>🔹 Разметку и установку камер на места</li>
+                          <li>🔹 Прокладку кабеля (80 м)</li>
+                          <li>🔹 Установку короба/креплений</li>
+                          <li>🔹 Подключение кабелей к PoE-свитчу</li>
+                        </ul>
+                      </div>
+
+                      <div className="border-l-4 border-primary pl-4">
+                        <h5 className="font-semibold text-foreground mb-2">⚙️ 8. Настройка системы</h5>
+                        <ul className="space-y-1 text-sm text-muted-foreground">
+                          <li>✔️ Настройка NVR (каналы, запись, расписание)</li>
+                          <li>✔️ Настройка сетевых параметров</li>
+                          <li>✔️ Веб/мобильный доступ (приложение/клиент)</li>
+                          <li>✔️ Тестирование работы камер, корректировки углов обзора</li>
+                        </ul>
+                      </div>
+
+                      <div className="border-l-4 border-primary pl-4">
+                        <h5 className="font-semibold text-foreground mb-2">🖥 9. Тестирование и инструкции</h5>
+                        <ul className="space-y-1 text-sm text-muted-foreground">
+                          <li>✔️ Проверка стабильности записи</li>
+                          <li>✔️ Проверка качества изображения</li>
+                          <li>✔️ Инструктаж по просмотру и управлению</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-gradient-to-br from-accent/20 to-accent/5 rounded-lg p-6 border border-accent/20">
+                    <h4 className="text-xl font-bold text-foreground mb-4">💰 Цены на установку видеонаблюдения</h4>
+                    
+                    <p className="text-muted-foreground mb-4">
+                      Мы предлагаем профессиональную установку систем видеонаблюдения с прозрачным и обоснованным ценообразованием.
+                      Стартовая цена рассчитана на базовый комплект из 4 камер видеонаблюдения — оптимальное решение для частного дома 🏠.
+                    </p>
+
+                    <p className="text-muted-foreground mb-3">
+                      Обращаем ваше внимание, что итоговая стоимость проекта формируется индивидуально и может изменяться в зависимости от требований заказчика, а именно:
+                    </p>
+
+                    <ul className="space-y-2 mb-4 text-muted-foreground">
+                      <li className="flex items-start gap-2">
+                        <span className="text-primary mt-1">📷</span>
+                        <span>типа и технических характеристик камер</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-primary mt-1">🏗</span>
+                        <span>особенностей объекта и сложности монтажных работ</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-primary mt-1">📏</span>
+                        <span>длины кабельных трасс</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-primary mt-1">⚙️</span>
+                        <span>необходимости дополнительного оборудования и расширенных настроек</span>
+                      </li>
+                    </ul>
+
+                    <div className="bg-background rounded-lg p-4 mb-4">
+                      <p className="font-semibold text-foreground mb-2">Для вашего удобства мы предоставляем:</p>
+                      <ul className="space-y-1 text-muted-foreground">
+                        <li>✅ Бесплатный выезд специалиста</li>
+                        <li>✅ Бесплатный замер и консультацию</li>
+                      </ul>
+                      <p className="text-sm text-muted-foreground mt-2">
+                        — вы заранее будете понимать стоимость и состав работ, без скрытых платежей.
+                      </p>
+                    </div>
+
+                    <div className="bg-primary/10 rounded-lg p-4 border-2 border-primary/30">
+                      <h5 className="text-lg font-bold text-primary mb-2">🎁 Специальная акция</h5>
+                      <p className="text-foreground font-semibold mb-2">
+                        Воспользуйтесь выгодным предложением:<br />
+                        каждая 5-я камера — в подарок!
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        ℹ️ Важно: в рамках акции предоставляется только камера. Работы по её установке, подключению, настройке и сопутствующие материалы оплачиваются отдельно.
+                      </p>
+                    </div>
+
+                    <p className="text-muted-foreground mt-4">
+                      📞 Свяжитесь с нами, и мы подберём надёжное решение по видеонаблюдению, полностью соответствующее вашим задачам и бюджету.
+                    </p>
+                  </div>
+
+                  <div className="text-center mt-6">
+                    <Button 
+                      onClick={() => scrollToSection('contacts')} 
+                      size="lg"
+                      className="text-lg px-8"
+                    >
+                      <Icon name="Phone" size={20} className="mr-2" />
+                      Заказать консультацию
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
         <PortfolioSection />
 
         <section id="contacts" className="py-20 bg-gradient-to-br from-muted/50 to-background">
