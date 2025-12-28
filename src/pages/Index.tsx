@@ -231,7 +231,7 @@ const Index = () => {
                   </div>
 
                   <div className="bg-muted/30 rounded-lg p-6 mb-6">
-                    <h4 className="text-xl font-bold text-foreground mb-6 text-center">Комплектация базового пакета</h4>
+                    <h4 className="text-xl font-bold text-foreground mb-6 text-center">Что входит в базовый комплект видеонаблюдения</h4>
                     
                     <div className="space-y-4">
                       <div className="border-l-4 border-primary pl-4">
