@@ -10,7 +10,7 @@ const HeroSection = ({ scrollToSection }: HeroSectionProps) => {
   const stats = [
     { number: '100+', label: 'Проектов' },
     { number: '5', label: 'Лет опыта' },
-    { number: '50+', label: 'Клиентов' },
+    { number: '70+', label: 'Клиентов' },
     { number: '24/7', label: 'Поддержка' }
   ];
 
@@ -51,7 +51,7 @@ const HeroSection = ({ scrollToSection }: HeroSectionProps) => {
                 Наши услуги
                 <Icon name="ArrowRight" size={20} className="ml-2" />
               </Button>
-              <Button size="lg" variant="outline" onClick={() => scrollToSection('contacts')} className="bg-background/50 border-primary text-foreground hover:bg-primary hover:text-primary-foreground">
+              <Button size="lg" variant="outline" onClick={() => scrollToSection('contacts')} className="bg-background/50 border-primary text-foreground hover:bg-primary hover:text-primary-foreground flex items-center justify-center">
                 Получить консультацию
               </Button>
             </motion.div>

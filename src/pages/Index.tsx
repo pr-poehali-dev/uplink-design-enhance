@@ -15,7 +15,7 @@ const Index = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'services', 'pricing', 'portfolio', 'reviews', 'contacts'];
+      const sections = ['home', 'services', 'pricing', 'portfolio', 'contacts', 'reviews'];
       const scrollPosition = window.scrollY + 200;
 
       for (const section of sections) {
@@ -140,7 +140,7 @@ const Index = () => {
             </div>
             
             <nav className="hidden md:flex gap-6">
-              {['home', 'services', 'pricing', 'portfolio', 'reviews', 'contacts'].map((section) => (
+              {['home', 'services', 'pricing', 'portfolio', 'contacts', 'reviews'].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
@@ -152,8 +152,8 @@ const Index = () => {
                   {section === 'services' && 'Услуги'}
                   {section === 'pricing' && 'Стоимость'}
                   {section === 'portfolio' && 'Портфолио'}
-                  {section === 'reviews' && 'Отзывы'}
                   {section === 'contacts' && 'Контакты'}
+                  {section === 'reviews' && 'Отзывы'}
                 </button>
               ))}
             </nav>
