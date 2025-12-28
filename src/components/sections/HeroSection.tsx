@@ -8,9 +8,9 @@ interface HeroSectionProps {
 
 const HeroSection = ({ scrollToSection }: HeroSectionProps) => {
   const stats = [
-    { number: '500+', label: 'Проектов' },
-    { number: '12', label: 'Лет опыта' },
-    { number: '200+', label: 'Клиентов' },
+    { number: '100+', label: 'Проектов' },
+    { number: '5', label: 'Лет опыта' },
+    { number: '50+', label: 'Клиентов' },
     { number: '24/7', label: 'Поддержка' }
   ];
 

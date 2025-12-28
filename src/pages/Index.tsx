@@ -220,6 +220,14 @@ const Index = () => {
                         className="w-full max-w-3xl object-contain"
                       />
                     </div>
+
+                    <div className="flex justify-center w-full">
+                      <img 
+                        src="https://cdn.poehali.dev/files/4-коробки.png" 
+                        alt="Монтажные коробки"
+                        className="w-full max-w-4xl object-contain"
+                      />
+                    </div>
                   </div>
 
                   <div className="bg-muted/30 rounded-lg p-6 mb-6">
