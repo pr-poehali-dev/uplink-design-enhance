@@ -30,7 +30,7 @@ const HeroSection = ({ scrollToSection }: HeroSectionProps) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <img src="https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/fabe24b9-b3a0-44c4-bbe6-4b501c5376ef.jpg" alt="Christmas tree" className="inline-block w-12 h-12 md:w-16 md:h-16 object-contain align-middle" /> Профессиональный монтаж<br />слаботочных систем <img src="https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/cceaf82a-038a-421a-995d-1e050d6844c1.jpg" alt="Snowflake" className="inline-block w-10 h-10 md:w-14 md:h-14 object-contain align-middle" />
+              Профессиональный монтаж<br />слаботочных систем
             </motion.h2>
             <motion.p 
               className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl"

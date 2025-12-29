@@ -56,13 +56,7 @@ const ServicesSection = () => {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="hover-scale transition-all duration-300 hover:shadow-lg border-2 hover:border-primary/50 h-full relative overflow-hidden">
-                <div className="absolute top-2 right-2 w-8 h-8 opacity-60">
-                  {index === 0 && <img src="https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/cceaf82a-038a-421a-995d-1e050d6844c1.jpg" alt="Snowflake" className="w-full h-full object-contain" />}
-                  {index === 1 && <img src="https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/90a9ba53-fe1b-47e4-8396-d056775cdd43.jpg" alt="Ornament" className="w-full h-full object-contain" />}
-                  {index === 2 && <img src="https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/fabe24b9-b3a0-44c4-bbe6-4b501c5376ef.jpg" alt="Tree" className="w-full h-full object-contain" />}
-                  {index === 3 && <img src="https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/eb38b8ef-1256-4997-8319-ebd14a9dd6f0.jpg" alt="Bells" className="w-full h-full object-contain" />}
-                </div>
+              <Card className="hover-scale transition-all duration-300 hover:shadow-lg border-2 hover:border-primary/50 h-full">
                 <CardHeader>
                   <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                     <Icon name={service.icon} size={28} className="text-primary" />

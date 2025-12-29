@@ -134,14 +134,8 @@ const Index = () => {
                 className="h-24 w-auto"
               />
               <div>
-                <h1 className="text-xl font-bold text-foreground relative inline-block">
+                <h1 className="text-xl font-bold text-foreground">
                   Uplink Control
-                  <img 
-                    src="https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/1cd9970e-41f3-42eb-b319-9f8d9bf2e991.jpg" 
-                    alt="Santa Hat" 
-                    className="absolute -top-4 -right-8 w-8 h-8 object-contain"
-                    style={{ transform: 'rotate(-15deg)' }}
-                  />
                 </h1>
                 <p className="text-xs text-muted-foreground">ВАШ ВЫБОР — НАШЕ РЕШЕНИЕ</p>
               </div>
@@ -403,16 +397,13 @@ const Index = () => {
                       </p>
                     </div>
 
-                    <div className="bg-gradient-to-br from-red-500/20 via-green-500/20 to-primary/20 rounded-lg p-4 border-2 border-primary/50 relative overflow-hidden">
-                      <img src="https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/61432be4-fe68-473d-97c6-15f8c44dcd1e.jpg" alt="Gift" className="absolute top-2 right-2 w-12 h-12 object-contain animate-bounce" />
+                    <div className="bg-primary/10 rounded-lg p-4 border-2 border-primary/30">
                       <div className="flex items-center gap-2 mb-2">
-                        <img src="https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/fabe24b9-b3a0-44c4-bbe6-4b501c5376ef.jpg" alt="Tree" className="w-8 h-8 object-contain" />
-                        <h5 className="text-lg font-bold text-primary">Новогодняя акция!</h5>
-                        <img src="https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/cceaf82a-038a-421a-995d-1e050d6844c1.jpg" alt="Snowflake" className="w-7 h-7 object-contain" />
+                        <Icon name="Gift" className="text-primary" size={20} />
+                        <h5 className="text-lg font-bold text-primary">Специальная акция</h5>
                       </div>
-                      <p className="text-foreground font-semibold mb-2 flex items-center gap-2">
-                        <img src="https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/1cd9970e-41f3-42eb-b319-9f8d9bf2e991.jpg" alt="Santa Hat" className="w-6 h-6 object-contain" />
-                        Воспользуйтесь праздничным предложением:<br />
+                      <p className="text-foreground font-semibold mb-2">
+                        Воспользуйтесь выгодным предложением:<br />
                         каждая 5-я камера в подарок!
                       </p>
                       <div className="flex items-start gap-2 mt-3">
@@ -453,10 +444,8 @@ const Index = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 flex items-center justify-center gap-3">
-                  <img src="https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/1cd9970e-41f3-42eb-b319-9f8d9bf2e991.jpg" alt="Santa Hat" className="w-10 h-10 md:w-12 md:h-12 object-contain" />
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
                   Свяжитесь с нами
-                  <img src="https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/fabe24b9-b3a0-44c4-bbe6-4b501c5376ef.jpg" alt="Christmas Tree" className="w-10 h-10 md:w-12 md:h-12 object-contain" />
                 </h2>
                 <p className="text-lg text-muted-foreground">
                   Оставьте заявку для общения в мессенджере Telegram
@@ -617,21 +606,14 @@ const Index = () => {
                   className="h-24 w-auto"
                 />
                 <div>
-                  <h3 className="font-bold text-lg flex items-center gap-2">
-                    Uplink Control 
-                    <img src="https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/fabe24b9-b3a0-44c4-bbe6-4b501c5376ef.jpg" alt="Tree" className="w-6 h-6 object-contain" />
-                  </h3>
+                  <h3 className="font-bold text-lg">Uplink Control</h3>
                   <p className="text-xs text-white/70">ВАШ ВЫБОР — НАШЕ РЕШЕНИЕ</p>
                 </div>
               </div>
               <p className="text-white/70 text-sm">
                 Профессиональный монтаж слаботочных систем
               </p>
-              <p className="text-white/90 text-sm mt-2 font-semibold flex items-center gap-2">
-                <img src="https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/cceaf82a-038a-421a-995d-1e050d6844c1.jpg" alt="Snowflake" className="w-5 h-5 object-contain" />
-                С Новым Годом!
-                <img src="https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/1cd9970e-41f3-42eb-b319-9f8d9bf2e991.jpg" alt="Santa Hat" className="w-5 h-5 object-contain" />
-              </p>
+
             </div>
             
             <div>
