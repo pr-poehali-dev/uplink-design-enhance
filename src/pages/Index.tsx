@@ -124,7 +124,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+      <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-primary/20 shadow-lg shadow-primary/5">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -134,7 +134,7 @@ const Index = () => {
                 className="h-24 w-auto"
               />
               <div>
-                <h1 className="text-xl font-bold text-foreground">Uplink Control</h1>
+                <h1 className="text-xl font-bold text-foreground">Uplink Control <span className="text-2xl">🎅</span></h1>
                 <p className="text-xs text-muted-foreground">ВАШ ВЫБОР — НАШЕ РЕШЕНИЕ</p>
               </div>
             </div>

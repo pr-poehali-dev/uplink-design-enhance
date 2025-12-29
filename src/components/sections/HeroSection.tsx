@@ -30,7 +30,7 @@ const HeroSection = ({ scrollToSection }: HeroSectionProps) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Профессиональный монтаж<br />слаботочных систем
+              <span className="inline-block">🎄</span> Профессиональный монтаж<br />слаботочных систем <span className="inline-block">✨</span>
             </motion.h2>
             <motion.p 
               className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl"
