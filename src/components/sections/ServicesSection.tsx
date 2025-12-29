@@ -56,9 +56,15 @@ const ServicesSection = () => {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="hover-scale transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 border-2 hover:border-primary/50 h-full bg-gradient-to-br from-card to-card/50">
+              <Card className="hover-scale transition-all duration-300 hover:shadow-lg border-2 hover:border-primary/50 h-full relative overflow-hidden">
+                <div className="absolute top-2 right-2 text-2xl opacity-50">
+                  {index === 0 && '❄️'}
+                  {index === 1 && '⭐'}
+                  {index === 2 && '🎄'}
+                  {index === 3 && '✨'}
+                </div>
                 <CardHeader>
-                  <div className="w-14 h-14 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center mb-4 shadow-lg">
+                  <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                     <Icon name={service.icon} size={28} className="text-primary" />
                   </div>
                   <CardTitle className="text-xl">{service.title}</CardTitle>

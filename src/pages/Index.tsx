@@ -395,13 +395,15 @@ const Index = () => {
                       </p>
                     </div>
 
-                    <div className="bg-primary/10 rounded-lg p-4 border-2 border-primary/30">
+                    <div className="bg-gradient-to-br from-red-500/20 via-green-500/20 to-primary/20 rounded-lg p-4 border-2 border-primary/50 relative overflow-hidden">
+                      <div className="absolute top-2 right-2 text-4xl animate-bounce">🎁</div>
                       <div className="flex items-center gap-2 mb-2">
-                        <Icon name="Gift" className="text-primary" size={20} />
-                        <h5 className="text-lg font-bold text-primary">Специальная акция</h5>
+                        <span className="text-2xl">🎄</span>
+                        <h5 className="text-lg font-bold text-primary">Новогодняя акция!</h5>
+                        <span className="text-2xl">✨</span>
                       </div>
                       <p className="text-foreground font-semibold mb-2">
-                        Воспользуйтесь выгодным предложением:<br />
+                        🎅 Воспользуйтесь праздничным предложением:<br />
                         каждая 5-я камера в подарок!
                       </p>
                       <div className="flex items-start gap-2 mt-3">
@@ -442,7 +444,9 @@ const Index = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Свяжитесь с нами</h2>
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                  <span className="inline-block">🎅</span> Свяжитесь с нами <span className="inline-block">🎄</span>
+                </h2>
                 <p className="text-lg text-muted-foreground">
                   Оставьте заявку для общения в мессенджере Telegram
                 </p>
@@ -590,7 +594,8 @@ const Index = () => {
         <ReviewsSection />
       </main>
 
-      <footer className="bg-secondary/80 border-t border-border text-white py-12">
+      <footer className="bg-secondary/80 border-t border-primary/20 text-white py-12 relative overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 via-green-500 to-red-500"></div>
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
@@ -601,12 +606,15 @@ const Index = () => {
                   className="h-24 w-auto"
                 />
                 <div>
-                  <h3 className="font-bold text-lg">Uplink Control</h3>
+                  <h3 className="font-bold text-lg">Uplink Control <span className="text-xl">🎄</span></h3>
                   <p className="text-xs text-white/70">ВАШ ВЫБОР — НАШЕ РЕШЕНИЕ</p>
                 </div>
               </div>
               <p className="text-white/70 text-sm">
                 Профессиональный монтаж слаботочных систем
+              </p>
+              <p className="text-white/90 text-sm mt-2 font-semibold">
+                ✨ С Новым Годом! 🎅
               </p>
             </div>
             
