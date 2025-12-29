@@ -134,7 +134,10 @@ const Index = () => {
                 className="h-24 w-auto"
               />
               <div>
-                <h1 className="text-xl font-bold text-foreground">Uplink Control <span className="text-2xl">🎅</span></h1>
+                <h1 className="text-xl font-bold text-foreground relative inline-block">
+                  Uplink Control
+                  <span className="absolute -top-3 -right-6 text-3xl" style={{ transform: 'rotate(-15deg)' }}>🎅</span>
+                </h1>
                 <p className="text-xs text-muted-foreground">ВАШ ВЫБОР — НАШЕ РЕШЕНИЕ</p>
               </div>
             </div>
