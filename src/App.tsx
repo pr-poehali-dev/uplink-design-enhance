@@ -9,7 +9,6 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import AdminBlog from "./pages/AdminBlog";
 import NotFound from "./pages/NotFound";
-import Snowfall from "./components/Snowfall";
 import SEO from "./components/SEO";
 
 const queryClient = new QueryClient();
@@ -18,7 +17,6 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <SEO />
-      <Snowfall />
       <Toaster />
       <Sonner />
       <BrowserRouter>

@@ -133,7 +133,7 @@ const Index = () => {
 
   const handleAdminLogin = () => {
     const password = prompt('Введите пароль администратора:');
-    if (password === 'fgkbyrLSI3!') {
+    if (password === 'uplink2026') {
       setIsAdmin(true);
       sessionStorage.setItem('isAdmin', 'true');
       alert('Вы вошли как администратор');
