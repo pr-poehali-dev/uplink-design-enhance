@@ -19,7 +19,7 @@ export const blogPosts: BlogPost[] = [
     date: '15 января 2026',
     author: 'Uplink Control',
     readTime: '8 мин',
-    image: 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=800&q=80',
+    image: 'https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/ba302d34-48ca-499d-95c0-3a7b5926061d.jpg',
     content: `
 # Как выбрать систему видеонаблюдения для дома и офиса
 
@@ -131,7 +131,7 @@ export const blogPosts: BlogPost[] = [
     date: '10 января 2026',
     author: 'Uplink Control',
     readTime: '6 мин',
-    image: 'https://images.unsplash.com/photo-1565043666747-69f6646db940?auto=format&fit=crop&w=800&q=80',
+    image: 'https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/da7ff09a-4e0c-46e7-8596-7f3424c61970.jpg',
     content: `
 # Современные СКУД: виды и возможности систем контроля доступа
 
@@ -491,7 +491,7 @@ export const blogPosts: BlogPost[] = [
     date: '28 января 2026',
     author: 'Uplink Control',
     readTime: '10 мин',
-    image: 'https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=800&q=80',
+    image: 'https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/2461883f-3dda-42cb-a3c4-7df60f441891.jpg',
     content: `
 # Умный дом 2026: интеграция систем безопасности
 
