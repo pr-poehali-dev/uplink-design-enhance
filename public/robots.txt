@@ -1,3 +1,12 @@
+# robots.txt для uplinkcontrol.ru
+
+User-agent: *
+Allow: /
+
+# Разрешаем все основные поисковые роботы
+User-agent: Yandex
+Allow: /
+
 User-agent: Googlebot
 Allow: /
 
@@ -10,5 +19,13 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
-Allow: /
+# Запрещаем доступ к служебным файлам
+Disallow: /api/
+Disallow: /admin/
+Disallow: /*.json$
+
+# Sitemap
+Sitemap: https://uplinkcontrol.ru/sitemap.xml
+
+# Настройки для Яндекса
+Host: uplinkcontrol.ru

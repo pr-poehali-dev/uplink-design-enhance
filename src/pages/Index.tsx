@@ -14,6 +14,83 @@ const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
+    // Add structured data (Schema.org) for LocalBusiness
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Uplink Control",
+      "description": "Профессиональный монтаж видеонаблюдения, систем контроля доступа, пожарной сигнализации и слаботочных систем",
+      "url": "https://uplinkcontrol.ru",
+      "telephone": "+7 (977) 892-37-68",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Москва",
+        "addressCountry": "RU"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "55.7558",
+        "longitude": "37.6173"
+      },
+      "openingHours": "Mo-Su 09:00-21:00",
+      "priceRange": "₽₽₽",
+      "image": "https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/og-image-1766964139307.jpg",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "127"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Услуги по монтажу",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Монтаж видеонаблюдения",
+              "description": "Установка и настройка систем видеонаблюдения любой сложности"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Системы контроля доступа",
+              "description": "СКУД, турникеты, электронные замки"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Пожарная сигнализация",
+              "description": "Проектирование и монтаж систем пожарной безопасности"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Охранная сигнализация",
+              "description": "Современные системы охранной сигнализации"
+            }
+          }
+        ]
+      }
+    });
+    document.head.appendChild(script);
+
+    return () => {
+      if (script.parentNode) {
+        script.parentNode.removeChild(script);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       const sections = ['home', 'services', 'pricing', 'portfolio', 'contacts', 'reviews'];
       const scrollPosition = window.scrollY + 200;
