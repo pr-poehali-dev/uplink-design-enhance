@@ -5,6 +5,7 @@ import Icon from '@/components/ui/icon';
 import { blogPosts } from '@/data/blogPosts';
 import { useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
+import Header from '@/components/Header';
 
 export default function BlogPost() {
   const { id } = useParams();
@@ -37,6 +38,7 @@ export default function BlogPost() {
 
   return (
     <div className="min-h-screen bg-background">
+      <Header variant="blog" />
       <div className="relative h-[400px] bg-gradient-to-br from-primary/20 to-primary/5">
         <img
           src={post.image}

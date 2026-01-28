@@ -4,10 +4,12 @@ import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import { blogPosts } from '@/data/blogPosts';
 import { Link } from 'react-router-dom';
+import Header from '@/components/Header';
 
 export default function Blog() {
   return (
     <div className="min-h-screen bg-background">
+      <Header variant="blog" />
       <section className="py-20 bg-gradient-to-br from-primary/10 via-background to-background">
         <div className="container mx-auto px-4">
           <motion.div

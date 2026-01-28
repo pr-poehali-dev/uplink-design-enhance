@@ -8,6 +8,7 @@ import HeroSection from '@/components/sections/HeroSection';
 import ServicesSection from '@/components/sections/ServicesSection';
 import PortfolioSection from '@/components/sections/PortfolioSection';
 import ReviewsSection from '@/components/sections/ReviewsSection';
+import Header from '@/components/Header';
 
 
 const Index = () => {
@@ -201,51 +202,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-primary/20 shadow-lg shadow-primary/5">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <img 
-                src="https://cdn.poehali.dev/files/лого-orig-white.png" 
-                alt="Uplink Control" 
-                className="h-24 w-auto"
-              />
-              <div>
-                <h1 className="text-xl font-bold text-foreground">
-                  Uplink Control
-                </h1>
-                <p className="text-xs text-muted-foreground">ВАШ ВЫБОР — НАШЕ РЕШЕНИЕ</p>
-              </div>
-            </div>
-            
-            <nav className="hidden md:flex gap-6 items-center">
-              {['home', 'services', 'pricing', 'portfolio', 'contacts', 'reviews'].map((section) => (
-                <button
-                  key={section}
-                  onClick={() => scrollToSection(section)}
-                  className={`text-sm font-medium transition-colors hover:text-[#ff6b35] ${
-                    activeSection === section ? 'text-[#ff6b35]' : 'text-foreground'
-                  }`}
-                >
-                  {section === 'home' && 'Главная'}
-                  {section === 'services' && 'Услуги'}
-                  {section === 'pricing' && 'Стоимость'}
-                  {section === 'portfolio' && 'Портфолио'}
-                  {section === 'contacts' && 'Контакты'}
-                  {section === 'reviews' && 'Отзывы'}
-                </button>
-              ))}
-              <a href="/blog" className="text-sm font-medium transition-colors hover:text-[#ff6b35] text-foreground">
-                Блог
-              </a>
-            </nav>
-
-            <Button onClick={() => scrollToSection('contacts')} className="hidden md:flex">
-              Связаться
-            </Button>
-          </div>
-        </div>
-      </header>
+      <Header scrollToSection={scrollToSection} />
 
       <main>
         <HeroSection scrollToSection={scrollToSection} />
