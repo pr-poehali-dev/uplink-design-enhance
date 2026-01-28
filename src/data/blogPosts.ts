@@ -303,7 +303,7 @@ IP-камеры стали стандартом видеонаблюдения �
     date: '22 января 2026',
     author: 'Uplink Control',
     readTime: '8 мин',
-    image: 'https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/8ecb2400-58e8-4c83-a9c8-14291a35ca08.jpg',
+    image: 'https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/55d787fd-fbc7-49c3-97b0-20d18a2b3170.jpg',
     content: `
 # Как выбрать карты доступа для СКУД: полный гид по технологиям
 
@@ -653,7 +653,7 @@ DESFire для маленького офиса — переплата в 5 ра�
     date: '20 января 2026',
     author: 'Uplink Control',
     readTime: '9 мин',
-    image: 'https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/55d787fd-fbc7-49c3-97b0-20d18a2b3170.jpg',
+    image: 'https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/8ecb2400-58e8-4c83-a9c8-14291a35ca08.jpg',
     content: `
 # Камеры ночного видения: технологии и выбор для объекта
 
