@@ -218,7 +218,7 @@ const Index = () => {
               </div>
             </div>
             
-            <nav className="hidden md:flex gap-6">
+            <nav className="hidden md:flex gap-6 items-center">
               {['home', 'services', 'pricing', 'portfolio', 'contacts', 'reviews'].map((section) => (
                 <button
                   key={section}
@@ -235,6 +235,9 @@ const Index = () => {
                   {section === 'reviews' && 'Отзывы'}
                 </button>
               ))}
+              <a href="/blog" className="text-sm font-medium transition-colors hover:text-[#ff6b35] text-foreground">
+                Блог
+              </a>
             </nav>
 
             <Button onClick={() => scrollToSection('contacts')} className="hidden md:flex">
@@ -247,6 +250,88 @@ const Index = () => {
       <main>
         <HeroSection scrollToSection={scrollToSection} />
         <ServicesSection />
+
+        <section className="py-20 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Полезные статьи</h2>
+              <p className="text-lg text-muted-foreground">
+                Узнайте больше о системах безопасности из нашего блога
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8 mb-8">
+              <Card className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer overflow-hidden group">
+                <a href="/blog/vybor-sistemy-videonablyudeniya">
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=800&q=80"
+                      alt="Выбор системы видеонаблюдения"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="group-hover:text-primary transition-colors">
+                      Как выбрать систему видеонаблюдения
+                    </CardTitle>
+                    <CardDescription>
+                      Подробное руководство по выбору оптимальной системы видеонаблюдения
+                    </CardDescription>
+                  </CardHeader>
+                </a>
+              </Card>
+
+              <Card className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer overflow-hidden group">
+                <a href="/blog/sovremennye-skud">
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src="https://images.unsplash.com/photo-1565043666747-69f6646db940?auto=format&fit=crop&w=800&q=80"
+                      alt="СКУД"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="group-hover:text-primary transition-colors">
+                      Современные системы контроля доступа
+                    </CardTitle>
+                    <CardDescription>
+                      Обзор актуальных решений СКУД для офисов и бизнес-центров
+                    </CardDescription>
+                  </CardHeader>
+                </a>
+              </Card>
+
+              <Card className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer overflow-hidden group">
+                <a href="/blog/umnyi-dom-2026">
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src="https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=800&q=80"
+                      alt="Умный дом"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="group-hover:text-primary transition-colors">
+                      Умный дом 2026
+                    </CardTitle>
+                    <CardDescription>
+                      Интеграция систем безопасности с технологиями умного дома
+                    </CardDescription>
+                  </CardHeader>
+                </a>
+              </Card>
+            </div>
+
+            <div className="text-center">
+              <a href="/blog">
+                <Button size="lg" variant="outline">
+                  <Icon name="BookOpen" className="w-5 h-5 mr-2" />
+                  Все статьи блога
+                </Button>
+              </a>
+            </div>
+          </div>
+        </section>
 
         <section id="pricing" className="py-20 bg-gradient-to-br from-primary/5 to-background">
           <div className="container mx-auto px-4">

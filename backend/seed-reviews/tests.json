@@ -1,0 +1,15 @@
+{
+  "tests": [
+    {
+      "name": "Seed reviews",
+      "method": "POST",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true,
+        "inserted": 9
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
