@@ -30,7 +30,7 @@ const HeroSection = ({ scrollToSection }: HeroSectionProps) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Профессиональный монтаж<br />слаботочных систем
+              Профессиональный монтаж<br />слаботочных систем в Мариуполе
             </motion.h2>
             <motion.p 
               className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl"
@@ -39,7 +39,7 @@ const HeroSection = ({ scrollToSection }: HeroSectionProps) => {
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               Проектирование и установка систем видеонаблюдения, локальных сетей, 
-              структурированных кабельных систем и систем контроля доступа
+              структурированных кабельных систем и СКУД в Мариуполе
             </motion.p>
             <motion.div 
               className="flex flex-wrap gap-4"

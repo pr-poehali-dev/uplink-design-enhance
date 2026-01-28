@@ -7,7 +7,7 @@ const ServicesSection = () => {
     {
       icon: 'Camera',
       title: 'Видеонаблюдение',
-      description: 'Проектирование и монтаж систем видеонаблюдения любой сложности. IP и аналоговые камеры, удаленный доступ.'
+      description: 'Установка систем видеонаблюдения в Мариуполе. IP и аналоговые камеры, удаленный доступ.'
     },
     {
       icon: 'Network',
@@ -17,12 +17,12 @@ const ServicesSection = () => {
     {
       icon: 'Cable',
       title: 'СКС',
-      description: 'Структурированные кабельные системы под ключ. Проектирование, монтаж, сертификация сетей.'
+      description: 'Монтаж структурированных кабельных систем в Мариуполе. Проектирование, монтаж, сертификация.'
     },
     {
       icon: 'ShieldCheck',
       title: 'СКУД',
-      description: 'Системы контроля и управления доступом. Электронные замки, считыватели, турникеты, интеграция с учетом.'
+      description: 'Установка СКУД в Мариуполе. Электронные замки, считыватели, турникеты, интеграция.'
     }
   ];
 
@@ -41,7 +41,7 @@ const ServicesSection = () => {
     <section id="services" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Наши услуги</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Наши услуги в Мариуполе</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Полный спектр работ по проектированию и монтажу слаботочных систем
           </p>

@@ -27,13 +27,13 @@ const Index = () => {
       "telephone": "+7 (977) 892-37-68",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Москва",
+        "addressLocality": "Мариуполь",
         "addressCountry": "RU"
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": "55.7558",
-        "longitude": "37.6173"
+        "latitude": "47.0956",
+        "longitude": "37.5431"
       },
       "openingHours": "Mo-Su 09:00-21:00",
       "priceRange": "₽₽₽",
@@ -730,18 +730,18 @@ const Index = () => {
                 </div>
               </div>
               <p className="text-white/70 text-sm">
-                Профессиональный монтаж слаботочных систем
+                Профессиональный монтаж слаботочных систем в Мариуполе
               </p>
 
             </div>
             
             <div>
-              <h4 className="font-semibold mb-4">Услуги</h4>
+              <h4 className="font-semibold mb-4">Услуги в Мариуполе</h4>
               <ul className="space-y-2 text-sm text-white/70">
-                <li>Видеонаблюдение</li>
-                <li>Локальные сети</li>
-                <li>Структурированные кабельные системы</li>
-                <li>Системы контроля доступа</li>
+                <li>Установка видеонаблюдения</li>
+                <li>Монтаж локальных сетей</li>
+                <li>Монтаж СКС</li>
+                <li>Установка СКУД</li>
               </ul>
             </div>
             
