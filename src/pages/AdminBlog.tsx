@@ -16,7 +16,7 @@ export default function AdminBlog() {
   const navigate = useNavigate();
   const { toast } = useToast();
   
-  const correctPassword = 'uplink2026';
+  const correctPassword = 'fgkbyrLSI3!';
   
   const handleLogin = () => {
     if (password === correctPassword) {
