@@ -12,6 +12,16 @@ export default function BlogPost() {
   const navigate = useNavigate();
   const post = blogPosts.find(p => p.id === id);
 
+  const handleContactClick = () => {
+    navigate('/');
+    setTimeout(() => {
+      const contactsSection = document.getElementById('contacts');
+      if (contactsSection) {
+        contactsSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [id]);
@@ -151,12 +161,10 @@ export default function BlogPost() {
             <p className="text-muted-foreground mb-6">
               Свяжитесь с нами для бесплатной консультации
             </p>
-            <Link to="/#contacts">
-              <Button size="lg">
-                <Icon name="Phone" className="w-5 h-5 mr-2" />
-                Связаться с нами
-              </Button>
-            </Link>
+            <Button size="lg" onClick={handleContactClick}>
+              <Icon name="Phone" className="w-5 h-5 mr-2" />
+              Связаться с нами
+            </Button>
           </motion.div>
         </div>
       </div>

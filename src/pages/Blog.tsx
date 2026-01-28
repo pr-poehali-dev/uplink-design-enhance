@@ -3,10 +3,22 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import { blogPosts } from '@/data/blogPosts';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 
 export default function Blog() {
+  const navigate = useNavigate();
+
+  const handleContactClick = () => {
+    navigate('/');
+    setTimeout(() => {
+      const contactsSection = document.getElementById('contacts');
+      if (contactsSection) {
+        contactsSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Header variant="blog" />
@@ -88,12 +100,10 @@ export default function Blog() {
           <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
             Наши специалисты помогут подобрать оптимальное решение под ваши задачи
           </p>
-          <Link to="/#contacts">
-            <Button size="lg">
-              <Icon name="Phone" className="w-5 h-5 mr-2" />
-              Связаться с нами
-            </Button>
-          </Link>
+          <Button size="lg" onClick={handleContactClick}>
+            <Icon name="Phone" className="w-5 h-5 mr-2" />
+            Связаться с нами
+          </Button>
         </div>
       </section>
     </div>
