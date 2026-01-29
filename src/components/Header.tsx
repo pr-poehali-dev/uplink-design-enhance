@@ -25,7 +25,13 @@ export default function Header({ scrollToSection, variant = 'default' }: HeaderP
   const handleMenuClick = (item: typeof menuItems[0]) => {
     setMobileMenuOpen(false);
     
-    if (item.path.startsWith('/#')) {
+    if (item.path === '/') {
+      if (window.location.pathname !== '/') {
+        navigate('/');
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    } else if (item.path.startsWith('/#')) {
       const section = item.path.replace('/#', '');
       
       if (window.location.pathname !== '/') {
