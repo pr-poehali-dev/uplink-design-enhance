@@ -9,7 +9,7 @@ import Header from '@/components/Header';
 import Breadcrumbs from '@/components/Breadcrumbs';
 
 export default function BlogPost() {
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const post = blogPosts.find(p => p.id === id);
 
@@ -34,8 +34,8 @@ export default function BlogPost() {
         "@type": "Article",
         "headline": post.title,
         "image": post.image,
-        "datePublished": new Date(post.date).toISOString(),
-        "dateModified": new Date(post.date).toISOString(),
+        "datePublished": "2026-01-25T00:00:00Z",
+        "dateModified": "2026-01-25T00:00:00Z",
         "author": {
           "@type": "Organization",
           "name": post.author,

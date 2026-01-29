@@ -208,18 +208,15 @@ const ReviewsSection = () => {
                     <Icon key={i} name="Star" className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-xs text-muted-foreground">{review.date}</span>
-                  {isAdmin && (
-                    <button
-                      onClick={() => handleDeleteReview(review.id)}
-                      className="text-red-500 hover:text-red-700 transition-colors"
-                      title="Удалить отзыв"
-                    >
-                      <Icon name="Trash2" className="w-4 h-4" />
-                    </button>
-                  )}
-                </div>
+                {isAdmin && (
+                  <button
+                    onClick={() => handleDeleteReview(review.id)}
+                    className="text-red-500 hover:text-red-700 transition-colors"
+                    title="Удалить отзыв"
+                  >
+                    <Icon name="Trash2" className="w-4 h-4" />
+                  </button>
+                )}
               </div>
               <p className="text-muted-foreground mb-4 italic">"{review.text}"</p>
               <div className="border-t border-border pt-4">
