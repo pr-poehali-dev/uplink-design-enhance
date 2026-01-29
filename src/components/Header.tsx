@@ -23,20 +23,24 @@ export default function Header({ scrollToSection, variant = 'default' }: HeaderP
   ];
 
   const handleMenuClick = (item: typeof menuItems[0]) => {
+    setMobileMenuOpen(false);
+    
     if (item.path.startsWith('/#')) {
+      const section = item.path.replace('/#', '');
+      
       if (window.location.pathname !== '/') {
         navigate('/');
         setTimeout(() => {
-          const section = item.path.replace('/#', '');
-          scrollToSection?.(section);
-        }, 100);
+          const element = document.getElementById(section);
+          element?.scrollIntoView({ behavior: 'smooth' });
+        }, 300);
       } else {
-        scrollToSection?.(item.section);
+        const element = document.getElementById(section);
+        element?.scrollIntoView({ behavior: 'smooth' });
       }
     } else {
       navigate(item.path);
     }
-    setMobileMenuOpen(false);
   };
 
   return (
