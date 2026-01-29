@@ -224,6 +224,7 @@ const Index = () => {
                     <img
                       src="https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/ba302d34-48ca-499d-95c0-3a7b5926061d.jpg"
                       alt="Выбор системы видеонаблюдения"
+                      loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                   </div>
@@ -244,6 +245,7 @@ const Index = () => {
                     <img
                       src="https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/da7ff09a-4e0c-46e7-8596-7f3424c61970.jpg"
                       alt="СКУД"
+                      loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                   </div>
@@ -264,6 +266,7 @@ const Index = () => {
                     <img
                       src="https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/2461883f-3dda-42cb-a3c4-7df60f441891.jpg"
                       alt="Умный дом"
+                      loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                   </div>
@@ -313,6 +316,7 @@ const Index = () => {
                       <img 
                         src="https://cdn.poehali.dev/files/4-кам-без-фона.png" 
                         alt="4 IP-камеры HiWatch"
+                        loading="lazy"
                         className="w-full max-w-4xl object-contain"
                       />
                     </div>
@@ -322,6 +326,7 @@ const Index = () => {
                         <img 
                           src="https://cdn.poehali.dev/files/регик.png" 
                           alt="IP-видеорегистратор HiWatch"
+                          loading="lazy"
                           className="w-full max-w-sm object-contain"
                         />
                       </div>
@@ -329,6 +334,7 @@ const Index = () => {
                         <img 
                           src="https://cdn.poehali.dev/files/HDD.png" 
                           alt="Жёсткий диск 2TB WD Purple"
+                          loading="lazy"
                           className="w-full max-w-sm object-contain"
                         />
                       </div>
@@ -338,6 +344,7 @@ const Index = () => {
                       <img 
                         src="https://cdn.poehali.dev/files/Свитч.png" 
                         alt="PoE-свитч"
+                        loading="lazy"
                         className="w-full max-w-3xl object-contain"
                       />
                     </div>
@@ -346,6 +353,7 @@ const Index = () => {
                       <img 
                         src="https://cdn.poehali.dev/files/4-коробки.png" 
                         alt="Монтажные коробки"
+                        loading="lazy"
                         className="w-full max-w-4xl object-contain"
                       />
                     </div>

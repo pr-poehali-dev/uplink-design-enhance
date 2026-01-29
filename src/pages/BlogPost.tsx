@@ -6,6 +6,7 @@ import { blogPosts } from '@/data/blogPosts';
 import { useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import Header from '@/components/Header';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 export default function BlogPost() {
   const { id } = useParams();
@@ -24,7 +25,47 @@ export default function BlogPost() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [id]);
+
+    if (post) {
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.text = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": post.title,
+        "image": post.image,
+        "datePublished": new Date(post.date).toISOString(),
+        "dateModified": new Date(post.date).toISOString(),
+        "author": {
+          "@type": "Organization",
+          "name": post.author,
+          "url": "https://uplinkcontrol.ru"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Uplink Control",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://cdn.poehali.dev/files/лого-orig-white.png"
+          }
+        },
+        "description": post.excerpt,
+        "articleSection": post.category,
+        "wordCount": post.content.split(' ').length,
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": `https://uplinkcontrol.ru/blog/${post.id}`
+        }
+      });
+      document.head.appendChild(script);
+
+      return () => {
+        if (script.parentNode) {
+          script.parentNode.removeChild(script);
+        }
+      };
+    }
+  }, [id, post]);
 
   if (!post) {
     return (
@@ -98,6 +139,13 @@ export default function BlogPost() {
 
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
+          <Breadcrumbs 
+            items={[
+              { label: 'Главная', path: '/' },
+              { label: 'Блог', path: '/blog' },
+              { label: post.title }
+            ]}
+          />
           <motion.article
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -153,7 +201,48 @@ export default function BlogPost() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="mt-12 p-8 bg-primary/5 rounded-lg text-center"
+            className="mt-12 p-6 bg-muted/30 rounded-lg"
+          >
+            <h3 className="text-xl font-bold text-foreground mb-4">
+              Наши услуги в Мариуполе
+            </h3>
+            <div className="grid md:grid-cols-2 gap-4">
+              <Link to="/#services" className="flex items-start gap-3 p-4 bg-background rounded-lg hover:bg-primary/5 transition-colors group">
+                <Icon name="Camera" className="text-primary mt-1" size={20} />
+                <div>
+                  <div className="font-semibold text-foreground group-hover:text-primary transition-colors">Монтаж видеонаблюдения</div>
+                  <div className="text-sm text-muted-foreground">Установка IP-камер любой сложности</div>
+                </div>
+              </Link>
+              <Link to="/#services" className="flex items-start gap-3 p-4 bg-background rounded-lg hover:bg-primary/5 transition-colors group">
+                <Icon name="Shield" className="text-primary mt-1" size={20} />
+                <div>
+                  <div className="font-semibold text-foreground group-hover:text-primary transition-colors">Системы контроля доступа</div>
+                  <div className="text-sm text-muted-foreground">СКУД, турникеты, домофоны</div>
+                </div>
+              </Link>
+              <Link to="/#services" className="flex items-start gap-3 p-4 bg-background rounded-lg hover:bg-primary/5 transition-colors group">
+                <Icon name="Flame" className="text-primary mt-1" size={20} />
+                <div>
+                  <div className="font-semibold text-foreground group-hover:text-primary transition-colors">Пожарная сигнализация</div>
+                  <div className="text-sm text-muted-foreground">Проектирование и монтаж ОПС</div>
+                </div>
+              </Link>
+              <Link to="/#services" className="flex items-start gap-3 p-4 bg-background rounded-lg hover:bg-primary/5 transition-colors group">
+                <Icon name="Network" className="text-primary mt-1" size={20} />
+                <div>
+                  <div className="font-semibold text-foreground group-hover:text-primary transition-colors">Структурированные сети</div>
+                  <div className="text-sm text-muted-foreground">Локальные сети и СКС</div>
+                </div>
+              </Link>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            className="mt-8 p-8 bg-primary/5 rounded-lg text-center"
           >
             <h3 className="text-2xl font-bold text-foreground mb-4">
               Остались вопросы?
