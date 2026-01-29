@@ -72,7 +72,7 @@ const ReviewsSection = () => {
 
   const handleAdminLogin = () => {
     const password = prompt('Введите пароль администратора:');
-    if (password === 'uplink2026') {
+    if (password === 'fgkbyrLSI3!') {
       setIsAdmin(true);
       sessionStorage.setItem('isAdmin', 'true');
       alert('Вы вошли как администратор');
@@ -210,13 +210,15 @@ const ReviewsSection = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-xs text-muted-foreground">{review.date}</span>
-                  <button
-                    onClick={() => handleDeleteReview(review.id)}
-                    className="text-red-500 hover:text-red-700 transition-colors"
-                    title="Удалить отзыв"
-                  >
-                    <Icon name="Trash2" className="w-4 h-4" />
-                  </button>
+                  {isAdmin && (
+                    <button
+                      onClick={() => handleDeleteReview(review.id)}
+                      className="text-red-500 hover:text-red-700 transition-colors"
+                      title="Удалить отзыв"
+                    >
+                      <Icon name="Trash2" className="w-4 h-4" />
+                    </button>
+                  )}
                 </div>
               </div>
               <p className="text-muted-foreground mb-4 italic">"{review.text}"</p>
