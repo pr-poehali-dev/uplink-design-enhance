@@ -87,17 +87,18 @@ export default function Header({ scrollToSection, variant = 'default' }: HeaderP
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="fixed top-[88px] md:top-[104px] left-0 right-0 z-40 bg-background border-b border-border md:hidden overflow-hidden"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="fixed top-[88px] md:top-[104px] left-0 right-0 z-40 bg-background/98 backdrop-blur-md border-b border-border shadow-xl md:hidden"
           >
             <nav className="container mx-auto px-4 py-4 flex flex-col gap-2">
               {menuItems.map((item) => (
                 <button
                   key={item.section}
                   onClick={() => handleMenuClick(item)}
-                  className="text-left px-4 py-3 text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-lg transition-colors"
+                  className="text-left px-4 py-3 text-muted-foreground hover:text-primary hover:bg-primary/10 rounded-lg transition-all active:scale-95"
                 >
                   {item.label}
                 </button>
