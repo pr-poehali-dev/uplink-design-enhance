@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -219,7 +220,7 @@ const Index = () => {
 
             <div className="grid md:grid-cols-3 gap-8 mb-8">
               <Card className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer overflow-hidden group">
-                <a href="/blog/vybor-sistemy-videonablyudeniya">
+                <Link to="/blog/vybor-sistemy-videonablyudeniya">
                   <div className="relative h-48 overflow-hidden">
                     <img
                       src="https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/ba302d34-48ca-499d-95c0-3a7b5926061d.jpg"
@@ -236,11 +237,11 @@ const Index = () => {
                       Подробное руководство по выбору оптимальной системы видеонаблюдения
                     </CardDescription>
                   </CardHeader>
-                </a>
+                </Link>
               </Card>
 
               <Card className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer overflow-hidden group">
-                <a href="/blog/sovremennye-skud">
+                <Link to="/blog/sovremennye-skud">
                   <div className="relative h-48 overflow-hidden">
                     <img
                       src="https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/da7ff09a-4e0c-46e7-8596-7f3424c61970.jpg"
@@ -257,11 +258,11 @@ const Index = () => {
                       Обзор актуальных решений СКУД для офисов и бизнес-центров
                     </CardDescription>
                   </CardHeader>
-                </a>
+                </Link>
               </Card>
 
               <Card className="hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer overflow-hidden group">
-                <a href="/blog/umnyi-dom-2026">
+                <Link to="/blog/umnyi-dom-2026">
                   <div className="relative h-48 overflow-hidden">
                     <img
                       src="https://cdn.poehali.dev/projects/3f6c5e91-9f9f-49a1-849d-03782890bfba/files/2461883f-3dda-42cb-a3c4-7df60f441891.jpg"
@@ -278,17 +279,17 @@ const Index = () => {
                       Интеграция систем безопасности с технологиями умного дома
                     </CardDescription>
                   </CardHeader>
-                </a>
+                </Link>
               </Card>
             </div>
 
             <div className="text-center">
-              <a href="/blog">
+              <Link to="/blog">
                 <Button size="lg" variant="outline">
                   <Icon name="BookOpen" className="w-5 h-5 mr-2" />
                   Все статьи блога
                 </Button>
-              </a>
+              </Link>
             </div>
           </div>
         </section>
