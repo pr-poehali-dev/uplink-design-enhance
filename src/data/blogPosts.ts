@@ -215,13 +215,18 @@ export const blogPosts: BlogPost[] = [
 - YouTube, стриминг
 
 ### Пример правила MikroTik:
-```
+
+**Маркировка трафика:**
+\`\`\`
 /ip firewall mangle
 add chain=forward src-address=192.168.2.0/24 action=mark-packet new-packet-mark=video-traffic passthrough=no
+\`\`\`
 
+**Создание очереди:**
+\`\`\`
 /queue tree
 add name=video-queue parent=global packet-mark=video-traffic priority=1 max-limit=100M
-```
+\`\`\`
 
 ## Частые ошибки при настройке маршрутизации
 
@@ -271,25 +276,21 @@ add name=video-queue parent=global packet-mark=video-traffic priority=1 max-limi
 
 ### Инструменты для проверки маршрутизации
 
-**1. Traceroute (tracert)**
-Показывает путь пакета от источника к цели
-```
-traceroute 192.168.2.10
-```
+**1. Traceroute (tracert)**  
+Показывает путь пакета от источника к цели  
+\`traceroute 192.168.2.10\`
 
-**2. Ping с записью маршрута**
-Проверка доступности с детализацией пути
-```
-ping -R 192.168.2.10
-```
+**2. Ping с записью маршрута**  
+Проверка доступности с детализацией пути  
+\`ping -R 192.168.2.10\`
 
 **3. MTR (My Traceroute)**
 Комбинация ping и traceroute с статистикой потерь
 
-**4. Анализ таблицы маршрутизации**
-MikroTik: `/ip route print`
-Linux: `ip route show`
-Windows: `route print`
+**4. Анализ таблицы маршрутизации**  
+MikroTik: \`/ip route print\`  
+Linux: \`ip route show\`  
+Windows: \`route print\`
 
 ### Система мониторинга
 
