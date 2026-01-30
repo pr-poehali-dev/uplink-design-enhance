@@ -5,6 +5,7 @@ import Icon from '@/components/ui/icon';
 import { blogPosts } from '@/data/blogPosts';
 import { Link, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
+import React from 'react';
 
 export default function Blog() {
   const navigate = useNavigate();
@@ -18,6 +19,11 @@ export default function Blog() {
       }
     }, 100);
   };
+
+  // Scroll to top when component loads
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">

@@ -224,34 +224,34 @@ export default function BlogPost() {
               Наши услуги в Мариуполе
             </h3>
             <div className="grid md:grid-cols-2 gap-4">
-              <Link to="/#services" className="flex items-start gap-3 p-4 bg-background rounded-lg hover:bg-primary/5 transition-colors group">
+              <button onClick={() => { navigate('/'); setTimeout(() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="flex items-start gap-3 p-4 bg-background rounded-lg hover:bg-primary/5 transition-colors group text-left w-full">
                 <Icon name="Camera" className="text-primary mt-1" size={20} />
                 <div>
                   <div className="font-semibold text-foreground group-hover:text-primary transition-colors">Монтаж видеонаблюдения</div>
                   <div className="text-sm text-muted-foreground">Установка IP-камер любой сложности</div>
                 </div>
-              </Link>
-              <Link to="/#services" className="flex items-start gap-3 p-4 bg-background rounded-lg hover:bg-primary/5 transition-colors group">
+              </button>
+              <button onClick={() => { navigate('/'); setTimeout(() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="flex items-start gap-3 p-4 bg-background rounded-lg hover:bg-primary/5 transition-colors group text-left w-full">
                 <Icon name="Shield" className="text-primary mt-1" size={20} />
                 <div>
                   <div className="font-semibold text-foreground group-hover:text-primary transition-colors">Системы контроля доступа</div>
                   <div className="text-sm text-muted-foreground">СКУД, турникеты, домофоны</div>
                 </div>
-              </Link>
-              <Link to="/#services" className="flex items-start gap-3 p-4 bg-background rounded-lg hover:bg-primary/5 transition-colors group">
+              </button>
+              <button onClick={() => { navigate('/'); setTimeout(() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="flex items-start gap-3 p-4 bg-background rounded-lg hover:bg-primary/5 transition-colors group text-left w-full">
                 <Icon name="Flame" className="text-primary mt-1" size={20} />
                 <div>
                   <div className="font-semibold text-foreground group-hover:text-primary transition-colors">Пожарная сигнализация</div>
                   <div className="text-sm text-muted-foreground">Проектирование и монтаж ОПС</div>
                 </div>
-              </Link>
-              <Link to="/#services" className="flex items-start gap-3 p-4 bg-background rounded-lg hover:bg-primary/5 transition-colors group">
+              </button>
+              <button onClick={() => { navigate('/'); setTimeout(() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="flex items-start gap-3 p-4 bg-background rounded-lg hover:bg-primary/5 transition-colors group text-left w-full">
                 <Icon name="Network" className="text-primary mt-1" size={20} />
                 <div>
                   <div className="font-semibold text-foreground group-hover:text-primary transition-colors">Структурированные сети</div>
                   <div className="text-sm text-muted-foreground">Локальные сети и СКС</div>
                 </div>
-              </Link>
+              </button>
             </div>
           </motion.div>
 

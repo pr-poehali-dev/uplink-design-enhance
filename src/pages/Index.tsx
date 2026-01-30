@@ -580,7 +580,7 @@ const Index = () => {
               </div>
 
               <div className="grid md:grid-cols-2 gap-8">
-                <Card>
+                <Card className="border-2">
                   <CardContent className="pt-6">
                     <form onSubmit={handleContactSubmit} className="space-y-4">
                       <div>
