@@ -38,11 +38,21 @@ export default function Header({ scrollToSection, variant = 'default' }: HeaderP
         navigate('/');
         setTimeout(() => {
           const element = document.getElementById(section);
-          element?.scrollIntoView({ behavior: 'smooth' });
-        }, 300);
+          if (element) {
+            const offset = 100;
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - offset;
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+          }
+        }, 500);
       } else {
         const element = document.getElementById(section);
-        element?.scrollIntoView({ behavior: 'smooth' });
+        if (element) {
+          const offset = 100;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - offset;
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
       }
     } else {
       navigate(item.path);

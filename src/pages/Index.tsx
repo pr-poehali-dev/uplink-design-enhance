@@ -580,8 +580,8 @@ const Index = () => {
               </div>
 
               <div className="grid md:grid-cols-2 gap-8">
-                <Card className="border-2">
-                  <CardContent className="pt-6">
+                <Card className="h-fit">
+                  <CardContent className="pt-6 pb-6">
                     <form onSubmit={handleContactSubmit} className="space-y-4">
                       <div>
                         <label className="text-sm font-medium mb-2 block">Ваше имя *</label>
