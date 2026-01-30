@@ -27,6 +27,23 @@ export default function BlogPost() {
     window.scrollTo(0, 0);
 
     if (post) {
+      // Преобразуем дату из формата "25 января 2026" в ISO
+      const monthMap: { [key: string]: string } = {
+        'января': '01', 'февраля': '02', 'марта': '03', 'апреля': '04',
+        'мая': '05', 'июня': '06', 'июля': '07', 'августа': '08',
+        'сентября': '09', 'октября': '10', 'ноября': '11', 'декабря': '12'
+      };
+      
+      const dateMatch = post.date.match(/(\d+)\s+(\S+)\s+(\d{4})/);
+      let isoDate = '2026-01-25T00:00:00Z'; // fallback
+      
+      if (dateMatch) {
+        const day = dateMatch[1].padStart(2, '0');
+        const month = monthMap[dateMatch[2]] || '01';
+        const year = dateMatch[3];
+        isoDate = `${year}-${month}-${day}T00:00:00Z`;
+      }
+
       const script = document.createElement('script');
       script.type = 'application/ld+json';
       script.text = JSON.stringify({
@@ -34,8 +51,8 @@ export default function BlogPost() {
         "@type": "Article",
         "headline": post.title,
         "image": post.image,
-        "datePublished": "2026-01-25T00:00:00Z",
-        "dateModified": "2026-01-25T00:00:00Z",
+        "datePublished": isoDate,
+        "dateModified": isoDate,
         "author": {
           "@type": "Organization",
           "name": post.author,
