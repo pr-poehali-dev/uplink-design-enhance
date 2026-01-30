@@ -676,6 +676,54 @@ const Index = () => {
                       </div>
                     </CardContent>
                   </Card>
+
+                  <Card>
+                    <CardContent className="pt-6">
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                          <Icon name="Share2" size={24} className="text-primary" />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="font-semibold text-lg mb-3">Мы в соцсетях</h3>
+                          <div className="flex flex-wrap gap-3">
+                            <a 
+                              href="https://vk.com/uplink.ctrl" 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#0077FF] hover:bg-[#0066DD] text-white transition-all hover:scale-105"
+                            >
+                              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14c5.6 0 6.93-1.33 6.93-6.93V8.93C22 3.33 20.67 2 15.07 2zm3.25 14.97h-1.41c-.58 0-.76-.46-1.82-1.52-.91-.91-1.31-1.03-1.54-1.03-.31 0-.4.09-.4.53v1.39c0 .37-.12.59-1.11.59-1.64 0-3.45-.99-4.73-2.84-1.92-2.71-2.44-4.75-2.44-5.16 0-.23.09-.44.53-.44h1.41c.4 0 .55.18.7.61.78 2.13 2.1 4 2.64 4 .2 0 .29-.09.29-.61v-2.37c-.06-.98-.57-1.06-.57-1.41 0-.18.15-.37.4-.37h2.22c.33 0 .46.18.46.58v3.21c0 .33.15.46.24.46.2 0 .36-.13.73-.5 1.14-1.28 1.95-3.26 1.95-3.26.11-.23.28-.44.71-.44h1.41c.48 0 .58.24.48.58-.17.82-1.91 3.52-1.91 3.52-.16.27-.22.39 0 .7.17.23.72.71 1.09 1.14.68.76 1.2 1.39 1.34 1.83.14.45-.08.67-.53.67z"/>
+                              </svg>
+                              <span className="text-sm font-medium">ВКонтакте</span>
+                            </a>
+                            <a 
+                              href="https://t.me/uplinkctrl180" 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#0088cc] hover:bg-[#0077b3] text-white transition-all hover:scale-105"
+                            >
+                              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+                              </svg>
+                              <span className="text-sm font-medium">Telegram</span>
+                            </a>
+                            <a 
+                              href="https://t.me/UPlinkControl_bot" 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-br from-[#0088cc] to-[#229ED9] hover:from-[#0077b3] hover:to-[#1a8dc4] text-white transition-all hover:scale-105"
+                            >
+                              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/>
+                              </svg>
+                              <span className="text-sm font-medium">Telegram бот</span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
                 </div>
               </div>
             </div>
@@ -737,9 +785,48 @@ const Index = () => {
                   <p className="text-xs text-white/70">ВАШ ВЫБОР — НАШЕ РЕШЕНИЕ</p>
                 </div>
               </div>
-              <p className="text-white/70 text-sm">
+              <p className="text-white/70 text-sm mb-4">
                 Профессиональный монтаж слаботочных систем в Мариуполе
               </p>
+              
+              <div className="flex flex-col gap-3">
+                <h4 className="font-semibold text-sm">Мы в соцсетях</h4>
+                <div className="flex gap-3">
+                  <a 
+                    href="https://vk.com/uplink.ctrl" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 flex items-center justify-center rounded-lg bg-[#0077FF] hover:bg-[#0066DD] transition-all hover:scale-110"
+                    title="ВКонтакте"
+                  >
+                    <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14c5.6 0 6.93-1.33 6.93-6.93V8.93C22 3.33 20.67 2 15.07 2zm3.25 14.97h-1.41c-.58 0-.76-.46-1.82-1.52-.91-.91-1.31-1.03-1.54-1.03-.31 0-.4.09-.4.53v1.39c0 .37-.12.59-1.11.59-1.64 0-3.45-.99-4.73-2.84-1.92-2.71-2.44-4.75-2.44-5.16 0-.23.09-.44.53-.44h1.41c.4 0 .55.18.7.61.78 2.13 2.1 4 2.64 4 .2 0 .29-.09.29-.61v-2.37c-.06-.98-.57-1.06-.57-1.41 0-.18.15-.37.4-.37h2.22c.33 0 .46.18.46.58v3.21c0 .33.15.46.24.46.2 0 .36-.13.73-.5 1.14-1.28 1.95-3.26 1.95-3.26.11-.23.28-.44.71-.44h1.41c.48 0 .58.24.48.58-.17.82-1.91 3.52-1.91 3.52-.16.27-.22.39 0 .7.17.23.72.71 1.09 1.14.68.76 1.2 1.39 1.34 1.83.14.45-.08.67-.53.67z"/>
+                    </svg>
+                  </a>
+                  <a 
+                    href="https://t.me/uplinkctrl180" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 flex items-center justify-center rounded-lg bg-[#0088cc] hover:bg-[#0077b3] transition-all hover:scale-110"
+                    title="Telegram канал"
+                  >
+                    <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+                    </svg>
+                  </a>
+                  <a 
+                    href="https://t.me/UPlinkControl_bot" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 flex items-center justify-center rounded-lg bg-gradient-to-br from-[#0088cc] to-[#229ED9] hover:from-[#0077b3] hover:to-[#1a8dc4] transition-all hover:scale-110"
+                    title="Telegram бот"
+                  >
+                    <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
 
             </div>
             
