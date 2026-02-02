@@ -568,6 +568,95 @@ const Index = () => {
 
         <PortfolioSection />
 
+        <section className="py-16 bg-muted/20">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto prose prose-lg">
+              <h2 className="text-3xl font-bold text-foreground mb-6">Видеонаблюдение в Мариуполе — надёжная защита вашего объекта</h2>
+              
+              <div className="space-y-4 text-muted-foreground">
+                <p>
+                  <strong className="text-foreground">Uplink Control</strong> — профессиональная компания по установке систем видеонаблюдения в Мариуполе. 
+                  Мы специализируемся на монтаже камер видеонаблюдения для частных домов, квартир, офисов, магазинов, складов и производственных объектов.
+                </p>
+                
+                <p>
+                  <strong className="text-foreground">Установка видеонаблюдения в Мариуполе</strong> под ключ включает полный комплекс работ: 
+                  бесплатный выезд специалиста, проектирование системы, монтаж камер и оборудования, прокладку кабелей, настройку удалённого доступа 
+                  через интернет и обучение работе с системой. Гарантия на все работы — 3 года.
+                </p>
+
+                <div className="bg-background rounded-lg p-6 my-6">
+                  <h3 className="text-xl font-bold text-foreground mb-4">Почему выбирают нас для монтажа видеонаблюдения:</h3>
+                  <ul className="space-y-2">
+                    <li className="flex items-start gap-2">
+                      <Icon name="Check" size={20} className="text-primary mt-1 flex-shrink-0" />
+                      <span><strong>Опыт более 5 лет</strong> — установили более 100 систем видеонаблюдения в Мариуполе</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="Check" size={20} className="text-primary mt-1 flex-shrink-0" />
+                      <span><strong>Бесплатный выезд мастера</strong> и составление сметы без обязательств</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="Check" size={20} className="text-primary mt-1 flex-shrink-0" />
+                      <span><strong>Гарантия 3 года</strong> на оборудование и монтажные работы</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="Check" size={20} className="text-primary mt-1 flex-shrink-0" />
+                      <span><strong>Удалённый доступ</strong> к камерам через мобильное приложение — смотрите видео из любой точки мира</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="Check" size={20} className="text-primary mt-1 flex-shrink-0" />
+                      <span><strong>Монтаж за 1-2 дня</strong> — быстрая установка без простоев</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <p>
+                  Мы работаем с современным оборудованием: <strong className="text-foreground">IP-камеры 4K разрешения</strong>, видеорегистраторы с большим объёмом 
+                  памяти, системы с аналитикой и распознаванием лиц. Также устанавливаем <strong className="text-foreground">СКУД (системы контроля доступа)</strong>, 
+                  охранную и пожарную сигнализацию в Мариуполе.
+                </p>
+
+                <p>
+                  <strong className="text-foreground">Купить и установить камеры видеонаблюдения в Мариуполе</strong> можно по телефону 
+                  <a href="tel:+79778923768" className="text-primary font-semibold hover:underline ml-1">+7 (977) 892-37-68</a> или оставив заявку на сайте. 
+                  Наши специалисты проконсультируют вас, помогут подобрать оптимальное решение и рассчитают стоимость проекта.
+                </p>
+
+                <div className="bg-primary/10 border border-primary/20 rounded-lg p-6 mt-6">
+                  <h3 className="text-xl font-bold text-foreground mb-3">Популярные услуги в Мариуполе:</h3>
+                  <div className="grid md:grid-cols-2 gap-3">
+                    <div className="flex items-center gap-2">
+                      <Icon name="Camera" size={18} className="text-primary flex-shrink-0" />
+                      <span>Установка камер видеонаблюдения для дома</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Icon name="Building2" size={18} className="text-primary flex-shrink-0" />
+                      <span>Видеонаблюдение для офиса и склада</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Icon name="ShoppingCart" size={18} className="text-primary flex-shrink-0" />
+                      <span>Системы безопасности для магазинов</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Icon name="Wifi" size={18} className="text-primary flex-shrink-0" />
+                      <span>IP-видеонаблюдение с удалённым доступом</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Icon name="Shield" size={18} className="text-primary flex-shrink-0" />
+                      <span>СКУД и системы контроля доступа</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Icon name="Bell" size={18} className="text-primary flex-shrink-0" />
+                      <span>Охранная и пожарная сигнализация</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="contacts" className="py-20 bg-gradient-to-br from-muted/50 to-background">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">

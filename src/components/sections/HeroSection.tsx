@@ -24,22 +24,23 @@ const HeroSection = ({ scrollToSection }: HeroSectionProps) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <motion.h2 
+            <motion.h1 
               className="text-4xl md:text-6xl font-bold text-white mb-6"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Профессиональный монтаж<br />слаботочных систем в Мариуполе
-            </motion.h2>
+              Видеонаблюдение в Мариуполе<br />Установка камер и систем безопасности
+            </motion.h1>
             <motion.p 
               className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Проектирование и установка систем видеонаблюдения, локальных сетей, 
-              структурированных кабельных систем и СКУД в Мариуполе
+              <strong>Профессиональная установка видеонаблюдения в Мариуполе</strong> — монтаж камер, СКУД, 
+              охранной и пожарной сигнализации. Опыт работы 5+ лет, гарантия 3 года. 
+              Бесплатный выезд и консультация по Мариуполю.
             </motion.p>
             <motion.div 
               className="flex flex-wrap gap-4"
