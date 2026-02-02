@@ -307,7 +307,7 @@ const Index = () => {
               <Card className="mb-8 overflow-hidden border-2 border-primary/20">
                 <div className="bg-gradient-to-r from-primary/10 to-primary/5 p-8 text-center border-b border-primary/20">
                   <h3 className="text-2xl font-bold text-foreground mb-2">Базовый комплект видеонаблюдения</h3>
-                  <div className="text-5xl font-bold text-primary mb-2">59 990 ₽</div>
+                  <div className="text-5xl font-bold text-primary mb-2">от 59 990 ₽</div>
                   <p className="text-muted-foreground">Под ключ — всё включено</p>
                 </div>
 
