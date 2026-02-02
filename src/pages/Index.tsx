@@ -307,7 +307,7 @@ const Index = () => {
               <Card className="mb-8 overflow-hidden border-2 border-primary/20">
                 <div className="bg-gradient-to-r from-primary/10 to-primary/5 p-8 text-center border-b border-primary/20">
                   <h3 className="text-2xl font-bold text-foreground mb-2">Базовый комплект видеонаблюдения</h3>
-                  <div className="text-5xl font-bold text-primary mb-2">79 990 ₽</div>
+                  <div className="text-5xl font-bold text-primary mb-2">59 990 ₽</div>
                   <p className="text-muted-foreground">Под ключ — всё включено</p>
                 </div>
 
@@ -618,8 +618,9 @@ const Index = () => {
                 </p>
 
                 <p>
-                  <strong className="text-foreground">Купить и установить камеры видеонаблюдения в Мариуполе</strong> можно по телефону 
-                  <a href="tel:+79778923768" className="text-primary font-semibold hover:underline ml-1">+7 (977) 892-37-68</a> или оставив заявку на сайте. 
+                  <strong className="text-foreground">Купить и установить камеры видеонаблюдения в Мариуполе</strong> можно по телефонам 
+                  <a href="tel:+79490066180" className="text-primary font-semibold hover:underline ml-1">+7 (949) 006-61-80</a> или
+                  <a href="tel:+79495143338" className="text-primary font-semibold hover:underline ml-1">+7 (949) 514-33-38</a>, а также оставив заявку на сайте. 
                   Наши специалисты проконсультируют вас, помогут подобрать оптимальное решение и рассчитают стоимость проекта.
                 </p>
 
