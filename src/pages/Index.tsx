@@ -25,7 +25,7 @@ const Index = () => {
       "name": "Uplink Control",
       "description": "Профессиональный монтаж видеонаблюдения, систем контроля доступа, пожарной сигнализации и слаботочных систем",
       "url": "https://uplinkcontrol.ru",
-      "telephone": "+7 (977) 892-37-68",
+      "telephone": ["+7 (949) 006-61-80", "+7 (949) 514-33-38"],
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Мариуполь",
