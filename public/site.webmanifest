@@ -1,0 +1,17 @@
+{
+  "name": "Uplink Control - Видеонаблюдение Мариуполь",
+  "short_name": "Uplink Control",
+  "description": "Профессиональная установка видеонаблюдения в Мариуполе",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#427fc1",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/"
+}
