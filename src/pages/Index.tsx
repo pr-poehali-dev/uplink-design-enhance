@@ -100,12 +100,55 @@ const Index = () => {
     });
     document.head.appendChild(breadcrumbScript);
 
+    const websiteScript = document.createElement('script');
+    websiteScript.type = 'application/ld+json';
+    websiteScript.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Uplink Control",
+      "url": "https://uplinkcontrol.ru",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://uplinkcontrol.ru/blog?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    });
+    document.head.appendChild(websiteScript);
+
+    const organizationScript = document.createElement('script');
+    organizationScript.type = 'application/ld+json';
+    organizationScript.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Uplink Control",
+      "url": "https://uplinkcontrol.ru",
+      "logo": "https://cdn.poehali.dev/files/лого-orig-white.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+7 (949) 006-61-80",
+        "contactType": "customer service",
+        "areaServed": "RU",
+        "availableLanguage": "Russian"
+      },
+      "sameAs": [
+        "https://vk.com/uplink.ctrl",
+        "https://t.me/uplinkctrl180"
+      ]
+    });
+    document.head.appendChild(organizationScript);
+
     return () => {
       if (businessScript.parentNode) {
         businessScript.parentNode.removeChild(businessScript);
       }
       if (breadcrumbScript.parentNode) {
         breadcrumbScript.parentNode.removeChild(breadcrumbScript);
+      }
+      if (websiteScript.parentNode) {
+        websiteScript.parentNode.removeChild(websiteScript);
+      }
+      if (organizationScript.parentNode) {
+        organizationScript.parentNode.removeChild(organizationScript);
       }
     };
   }, []);
