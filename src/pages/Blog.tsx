@@ -20,9 +20,36 @@ export default function Blog() {
     }, 100);
   };
 
-  // Scroll to top when component loads
   React.useEffect(() => {
     window.scrollTo(0, 0);
+
+    const breadcrumbScript = document.createElement('script');
+    breadcrumbScript.type = 'application/ld+json';
+    breadcrumbScript.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Главная",
+          "item": "https://uplinkcontrol.ru"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Блог",
+          "item": "https://uplinkcontrol.ru/blog"
+        }
+      ]
+    });
+    document.head.appendChild(breadcrumbScript);
+
+    return () => {
+      if (breadcrumbScript.parentNode) {
+        breadcrumbScript.parentNode.removeChild(breadcrumbScript);
+      }
+    };
   }, []);
 
   return (

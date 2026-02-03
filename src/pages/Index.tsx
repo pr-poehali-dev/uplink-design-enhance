@@ -16,10 +16,9 @@ const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
-    // Add structured data (Schema.org) for LocalBusiness
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify({
+    const businessScript = document.createElement('script');
+    businessScript.type = 'application/ld+json';
+    businessScript.text = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "Uplink Control",
@@ -83,11 +82,30 @@ const Index = () => {
         ]
       }
     });
-    document.head.appendChild(script);
+    document.head.appendChild(businessScript);
+
+    const breadcrumbScript = document.createElement('script');
+    breadcrumbScript.type = 'application/ld+json';
+    breadcrumbScript.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Главная",
+          "item": "https://uplinkcontrol.ru"
+        }
+      ]
+    });
+    document.head.appendChild(breadcrumbScript);
 
     return () => {
-      if (script.parentNode) {
-        script.parentNode.removeChild(script);
+      if (businessScript.parentNode) {
+        businessScript.parentNode.removeChild(businessScript);
+      }
+      if (breadcrumbScript.parentNode) {
+        breadcrumbScript.parentNode.removeChild(breadcrumbScript);
       }
     };
   }, []);
