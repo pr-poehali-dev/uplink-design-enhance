@@ -36,9 +36,12 @@ const ReviewsSection = () => {
       if (response.ok) {
         const data = await response.json();
         setReviews(data);
+      } else {
+        console.error('Failed to fetch reviews. Status:', response.status, 'StatusText:', response.statusText);
       }
     } catch (error) {
       console.error('Error fetching reviews:', error);
+      console.error('Fetch error:', error instanceof Error ? error.message : 'Unknown error', 'for', API_URL);
     } finally {
       setIsLoading(false);
     }
@@ -61,9 +64,15 @@ const ReviewsSection = () => {
           const savedReview = await response.json();
           setReviews([savedReview, ...reviews]);
           setNewReview({ name: '', company: '', text: '', rating: 5 });
+          alert('Спасибо за ваш отзыв! Он появится на сайте.');
+        } else {
+          console.error('Failed to submit review. Status:', response.status);
+          alert('Ошибка при отправке отзыва. Попробуйте позже.');
         }
       } catch (error) {
         console.error('Error submitting review:', error);
+        console.error('Fetch error:', error instanceof Error ? error.message : 'Unknown error', 'for', API_URL);
+        alert('Ошибка соединения. Проверьте интернет-подключение.');
       } finally {
         setIsSubmitting(false);
       }
