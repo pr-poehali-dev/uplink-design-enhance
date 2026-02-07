@@ -6,11 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import Icon from '@/components/ui/icon';
 
-const FALLBACK_REVIEWS = [
-  { id: 1, name: "Анна Соколова", company: "ООО Технологии", text: "Отличная работа! Быстро и качественно сделали наш корпоративный сайт.", rating: 5, date: "15 января 2026" },
-  { id: 2, name: "Дмитрий Волков", company: "Строй-Проект", text: "Профессиональный подход, учли все наши пожелания.", rating: 5, date: "22 января 2026" },
-  { id: 3, name: "Елена Кузнецова", company: "", text: "Очень довольна результатом! Рекомендую всем.", rating: 5, date: "28 января 2026" }
-];
+const FALLBACK_REVIEWS: any[] = [];
 
 const ReviewsSection = () => {
   const [reviews, setReviews] = useState<any[]>(FALLBACK_REVIEWS);
