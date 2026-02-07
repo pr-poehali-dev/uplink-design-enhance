@@ -1,0 +1,10 @@
+# Static files - serve directly
+/sitemap.xml /sitemap.xml 200
+/robots.txt /robots.txt 200
+/favicon.svg /favicon.svg 200
+/site.webmanifest /site.webmanifest 200
+/google_verification.html /google_verification.html 200
+/yandex_verification.html /yandex_verification.html 200
+
+# All other routes go to index.html for React Router
+/* /index.html 200
