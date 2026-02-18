@@ -18,6 +18,7 @@ export default function Header({ scrollToSection, variant = 'default' }: HeaderP
     { label: 'Услуги', section: 'services', path: '/#services' },
     { label: 'Портфолио', section: 'portfolio', path: '/#portfolio' },
     { label: 'Отзывы', section: 'reviews', path: '/#reviews' },
+    { label: 'Каталог', section: 'products', path: '/products' },
     { label: 'Блог', section: 'blog', path: '/blog' },
     { label: 'Контакты', section: 'contacts', path: '/#contacts' }
   ];
