@@ -21,13 +21,18 @@ def response(status, body):
 VALID_TYPES = ('camera', 'kit', 'recorder', 'switch', 'other')
 
 def check_admin(event):
-    headers = event.get('headers', {})
-    password = ''
-    for key, val in headers.items():
-        if key.lower() == 'x-admin-password':
-            password = val
-            break
     admin_pw = os.environ.get('ADMIN_PASSWORD', '')
+    if not admin_pw:
+        return False
+    body = event.get('body', '{}')
+    try:
+        data = json.loads(body) if body else {}
+    except Exception:
+        data = {}
+    password = data.get('admin_password', '')
+    if not password:
+        params = event.get('queryStringParameters', {}) or {}
+        password = params.get('admin_password', '')
     return password != '' and password == admin_pw
 
 def handler(event, context):

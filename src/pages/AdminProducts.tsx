@@ -45,7 +45,7 @@ export default function AdminProducts() {
   const [specVal, setSpecVal] = useState('');
   const { toast } = useToast();
 
-  const headers = { 'Content-Type': 'application/json', 'X-Admin-Password': adminPassword };
+  const jsonHeaders = { 'Content-Type': 'application/json' };
 
   const login = () => {
     setAdminPassword(password);
@@ -100,9 +100,9 @@ export default function AdminProducts() {
     setLoading(true);
     const url = PRODUCTS_URL;
     const method = editing ? 'PUT' : 'POST';
-    const body = editing ? { ...form, id: editing.id } : form;
+    const body = editing ? { ...form, id: editing.id, admin_password: adminPassword } : { ...form, admin_password: adminPassword };
 
-    const res = await fetch(url, { method, headers, body: JSON.stringify(body) });
+    const res = await fetch(url, { method, headers: jsonHeaders, body: JSON.stringify(body) });
     if (res.ok) {
       toast({ title: editing ? 'Товар обновлён' : 'Товар добавлен' });
       setEditing(null);
@@ -117,7 +117,7 @@ export default function AdminProducts() {
 
   const remove = async (id: number) => {
     if (!confirm('Удалить товар?')) return;
-    const res = await fetch(`${PRODUCTS_URL}?id=${id}`, { method: 'DELETE', headers });
+    const res = await fetch(`${PRODUCTS_URL}?id=${id}&admin_password=${encodeURIComponent(adminPassword)}`, { method: 'DELETE' });
     if (res.ok) {
       toast({ title: 'Товар удалён' });
       loadProducts();
@@ -127,8 +127,8 @@ export default function AdminProducts() {
   const toggleActive = async (product: Product) => {
     await fetch(PRODUCTS_URL, {
       method: 'PUT',
-      headers,
-      body: JSON.stringify({ id: product.id, is_active: !product.is_active }),
+      headers: jsonHeaders,
+      body: JSON.stringify({ id: product.id, is_active: !product.is_active, admin_password: adminPassword }),
     });
     loadProducts();
   };

@@ -22,6 +22,17 @@
       "method": "DELETE",
       "path": "/?id=999",
       "expectedStatus": 403
+    },
+    {
+      "name": "Create product without password in body",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "name": "Test Camera",
+        "type": "camera",
+        "price": 5000
+      },
+      "expectedStatus": 403
     }
   ]
 }
