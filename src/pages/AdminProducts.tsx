@@ -10,7 +10,7 @@ const PRODUCTS_URL = 'https://functions.poehali.dev/a180b14a-1fbe-4edd-a5af-d4fc
 
 interface Product {
   id: number;
-  type: 'camera' | 'kit';
+  type: 'camera' | 'kit' | 'recorder' | 'switch' | 'other';
   name: string;
   description: string;
   price: number;
@@ -186,23 +186,23 @@ export default function AdminProducts() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="flex gap-2">
-                  <Button
-                    size="sm"
-                    variant={form.type === 'camera' ? 'default' : 'outline'}
-                    onClick={() => setForm(prev => ({ ...prev, type: 'camera' }))}
-                    className="flex-1"
-                  >
-                    Камера
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant={form.type === 'kit' ? 'default' : 'outline'}
-                    onClick={() => setForm(prev => ({ ...prev, type: 'kit' }))}
-                    className="flex-1"
-                  >
-                    Комплект
-                  </Button>
+                <div className="flex flex-wrap gap-2">
+                  {([
+                    ['camera', 'Камера'],
+                    ['kit', 'Комплект'],
+                    ['recorder', 'Регистратор'],
+                    ['switch', 'Коммутатор'],
+                    ['other', 'Разное'],
+                  ] as const).map(([key, label]) => (
+                    <Button
+                      key={key}
+                      size="sm"
+                      variant={form.type === key ? 'default' : 'outline'}
+                      onClick={() => setForm(prev => ({ ...prev, type: key }))}
+                    >
+                      {label}
+                    </Button>
+                  ))}
                 </div>
                 <Input
                   placeholder="Название"
@@ -305,7 +305,7 @@ export default function AdminProducts() {
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2">
                             <span className={`text-xs px-2 py-0.5 rounded ${product.type === 'kit' ? 'bg-primary/10 text-primary' : 'bg-muted text-muted-foreground'}`}>
-                              {product.type === 'kit' ? 'Комплект' : 'Камера'}
+                              {{ camera: 'Камера', kit: 'Комплект', recorder: 'Регистратор', switch: 'Коммутатор', other: 'Разное' }[product.type]}
                             </span>
                             {!product.is_active && (
                               <span className="text-xs px-2 py-0.5 rounded bg-destructive/10 text-destructive">Скрыт</span>

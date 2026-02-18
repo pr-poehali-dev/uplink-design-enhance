@@ -18,9 +18,17 @@ def response(status, body):
         'isBase64Encoded': False
     }
 
+VALID_TYPES = ('camera', 'kit', 'recorder', 'switch', 'other')
+
 def check_admin(event):
-    password = event.get('headers', {}).get('X-Admin-Password') or event.get('headers', {}).get('x-admin-password', '')
-    return password == os.environ.get('ADMIN_PASSWORD', '')
+    headers = event.get('headers', {})
+    password = ''
+    for key, val in headers.items():
+        if key.lower() == 'x-admin-password':
+            password = val
+            break
+    admin_pw = os.environ.get('ADMIN_PASSWORD', '')
+    return password != '' and password == admin_pw
 
 def handler(event, context):
     '''API каталога товаров — камеры и комплекты видеонаблюдения'''
@@ -70,7 +78,7 @@ def handler(event, context):
             cur.close()
             conn.close()
             return response(400, {'error': 'Name is required'})
-        if product_type not in ('camera', 'kit'):
+        if product_type not in VALID_TYPES:
             product_type = 'camera'
         cur.execute(
             'INSERT INTO products (type, name, description, price, old_price, image_url, specs, sort_order) VALUES (%s, %s, %s, %s, %s, %s, %s, %s) RETURNING id',

@@ -10,7 +10,7 @@ const PRODUCTS_URL = 'https://functions.poehali.dev/a180b14a-1fbe-4edd-a5af-d4fc
 
 interface Product {
   id: number;
-  type: 'camera' | 'kit';
+  type: 'camera' | 'kit' | 'recorder' | 'switch' | 'other';
   name: string;
   description: string;
   price: number;
@@ -27,8 +27,17 @@ function formatPrice(price: number) {
 export default function Products() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<'all' | 'camera' | 'kit'>('all');
+  const [activeTab, setActiveTab] = useState<string>('all');
   const navigate = useNavigate();
+
+  const TABS: { key: string; label: string }[] = [
+    { key: 'all', label: 'Все' },
+    { key: 'camera', label: 'Камеры' },
+    { key: 'kit', label: 'Комплекты' },
+    { key: 'recorder', label: 'Регистраторы' },
+    { key: 'switch', label: 'Коммутаторы' },
+    { key: 'other', label: 'Разное' },
+  ];
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -40,8 +49,7 @@ export default function Products() {
   }, []);
 
   const filtered = activeTab === 'all' ? products : products.filter(p => p.type === activeTab);
-  const cameras = products.filter(p => p.type === 'camera');
-  const kits = products.filter(p => p.type === 'kit');
+  const countByType = (type: string) => type === 'all' ? products.length : products.filter(p => p.type === type).length;
 
   const handleContactClick = () => {
     navigate('/');
@@ -70,24 +78,23 @@ export default function Products() {
             </p>
           </motion.div>
 
-          <div className="flex justify-center gap-2 mb-10">
-            {[
-              { key: 'all' as const, label: 'Все', count: products.length },
-              { key: 'camera' as const, label: 'Камеры', count: cameras.length },
-              { key: 'kit' as const, label: 'Комплекты', count: kits.length },
-            ].map(tab => (
-              <Button
-                key={tab.key}
-                variant={activeTab === tab.key ? 'default' : 'outline'}
-                onClick={() => setActiveTab(tab.key)}
-                className="gap-2"
-              >
-                {tab.label}
-                {tab.count > 0 && (
-                  <span className="bg-background/20 text-xs px-1.5 py-0.5 rounded-full">{tab.count}</span>
-                )}
-              </Button>
-            ))}
+          <div className="flex justify-center flex-wrap gap-2 mb-10">
+            {TABS.map(tab => {
+              const count = countByType(tab.key);
+              return (
+                <Button
+                  key={tab.key}
+                  variant={activeTab === tab.key ? 'default' : 'outline'}
+                  onClick={() => setActiveTab(tab.key)}
+                  className="gap-2"
+                >
+                  {tab.label}
+                  {count > 0 && (
+                    <span className="bg-background/20 text-xs px-1.5 py-0.5 rounded-full">{count}</span>
+                  )}
+                </Button>
+              );
+            })}
           </div>
 
           {loading ? (
@@ -119,7 +126,7 @@ export default function Products() {
                         />
                         <div className="absolute top-3 left-3">
                           <span className={`px-3 py-1 rounded-full text-xs font-semibold ${product.type === 'kit' ? 'bg-primary text-primary-foreground' : 'bg-secondary text-secondary-foreground'}`}>
-                            {product.type === 'kit' ? 'Комплект' : 'Камера'}
+                            {{ camera: 'Камера', kit: 'Комплект', recorder: 'Регистратор', switch: 'Коммутатор', other: 'Разное' }[product.type]}
                           </span>
                         </div>
                         {product.old_price && (
