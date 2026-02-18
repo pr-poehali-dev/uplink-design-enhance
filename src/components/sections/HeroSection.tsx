@@ -48,12 +48,15 @@ const HeroSection = ({ scrollToSection }: HeroSectionProps) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              <Button size="lg" onClick={() => scrollToSection('services')} className="bg-primary hover:bg-primary/90">
-                Наши услуги
-                <Icon name="ArrowRight" size={20} className="ml-2" />
+              <Button size="lg" asChild className="bg-primary hover:bg-primary/90">
+                <a href="tel:+79490066180">
+                  <Icon name="Phone" size={20} className="mr-2" />
+                  Позвонить
+                </a>
               </Button>
-              <Button size="lg" variant="outline" onClick={() => scrollToSection('contacts')} className="bg-background/50 border-primary text-foreground hover:bg-primary hover:text-primary-foreground flex items-center justify-center">
-                Получить консультацию
+              <Button size="lg" variant="outline" className="bg-background/50 border-primary text-foreground hover:bg-primary hover:text-primary-foreground" onClick={() => window.dispatchEvent(new Event('open-chat-widget'))}>
+                <Icon name="MessageCircle" size={20} className="mr-2" />
+                Написать
               </Button>
             </motion.div>
           </motion.div>
