@@ -55,7 +55,7 @@ const HeroSection = ({ scrollToSection }: HeroSectionProps) => {
                 </a>
               </Button>
               <Button size="lg" variant="outline" asChild className="bg-background/50 border-primary text-foreground hover:bg-primary hover:text-primary-foreground">
-                <a href="https://t.me/UPlinkControl_bot" target="_blank" rel="noopener noreferrer">
+                <a href="https://t.me/uplinkctrl" target="_blank" rel="noopener noreferrer">
                   <Icon name="MessageCircle" size={20} className="mr-2" />
                   Написать
                 </a>
