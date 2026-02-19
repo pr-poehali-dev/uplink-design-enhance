@@ -23,7 +23,6 @@ VALID_TYPES = ('camera', 'kit', 'recorder', 'switch', 'other')
 def check_admin(event):
     admin_pw = os.environ.get('ADMIN_PASSWORD', '')
     if not admin_pw:
-        print(f"DEBUG: ADMIN_PASSWORD env is empty")
         return False
     body = event.get('body', '{}')
     try:
@@ -34,7 +33,6 @@ def check_admin(event):
     if not password:
         params = event.get('queryStringParameters', {}) or {}
         password = params.get('admin_password', '')
-    print(f"DEBUG: received_pw='{password}', admin_pw='{admin_pw[:3]}...', match={password == admin_pw}")
     return password != '' and password == admin_pw
 
 def handler(event, context):

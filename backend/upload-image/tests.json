@@ -1,0 +1,1 @@
+{"tests": [{"name": "Upload without auth", "method": "POST", "path": "/", "body": {"image": "dGVzdA==", "content_type": "image/jpeg"}, "expectedStatus": 403, "expectedBody": {"error": "string"}, "bodyMatcher": "partial"}, {"name": "OPTIONS preflight", "method": "OPTIONS", "path": "/", "expectedStatus": 200}]}

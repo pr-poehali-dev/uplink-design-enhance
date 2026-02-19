@@ -7,6 +7,7 @@ import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 
 const PRODUCTS_URL = 'https://functions.poehali.dev/a180b14a-1fbe-4edd-a5af-d4fcaa88bb23';
+const UPLOAD_URL = 'https://functions.poehali.dev/414540d2-8cd2-4e97-84b5-5f4a91fb472e';
 
 interface Product {
   id: number;
@@ -43,6 +44,7 @@ export default function AdminProducts() {
   const [form, setForm] = useState<Omit<Product, 'id'>>(emptyProduct);
   const [specKey, setSpecKey] = useState('');
   const [specVal, setSpecVal] = useState('');
+  const [uploading, setUploading] = useState(false);
   const { toast } = useToast();
 
   const jsonHeaders = { 'Content-Type': 'application/json' };
@@ -90,6 +92,36 @@ export default function AdminProducts() {
       delete newSpecs[key];
       return { ...prev, specs: newSpecs };
     });
+  };
+
+  const uploadImage = async (file: File) => {
+    if (file.size > 5 * 1024 * 1024) {
+      toast({ title: 'Файл слишком большой (макс. 5 МБ)', variant: 'destructive' });
+      return;
+    }
+    setUploading(true);
+    const reader = new FileReader();
+    reader.onload = async () => {
+      const base64 = (reader.result as string).split(',')[1];
+      const res = await fetch(UPLOAD_URL, {
+        method: 'POST',
+        headers: jsonHeaders,
+        body: JSON.stringify({
+          image: base64,
+          content_type: file.type,
+          admin_password: adminPassword,
+        }),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setForm(prev => ({ ...prev, image_url: data.url }));
+        toast({ title: 'Картинка загружена' });
+      } else {
+        toast({ title: 'Ошибка загрузки картинки', variant: 'destructive' });
+      }
+      setUploading(false);
+    };
+    reader.readAsDataURL(file);
   };
 
   const save = async () => {
@@ -230,14 +262,51 @@ export default function AdminProducts() {
                     onChange={e => setForm(prev => ({ ...prev, old_price: Number(e.target.value) || null }))}
                   />
                 </div>
-                <Input
-                  placeholder="URL изображения"
-                  value={form.image_url}
-                  onChange={e => setForm(prev => ({ ...prev, image_url: e.target.value }))}
-                />
-                {form.image_url && (
-                  <img src={form.image_url} alt="preview" className="w-full h-32 object-contain rounded bg-muted" />
-                )}
+                <div className="space-y-2">
+                  <p className="text-sm font-medium text-foreground">Изображение</p>
+                  {form.image_url ? (
+                    <div className="relative">
+                      <img src={form.image_url} alt="preview" className="w-full h-32 object-contain rounded bg-muted" />
+                      <button
+                        onClick={() => setForm(prev => ({ ...prev, image_url: '' }))}
+                        className="absolute top-1 right-1 bg-background/80 rounded-full p-1 hover:bg-destructive hover:text-destructive-foreground transition-colors"
+                      >
+                        <Icon name="X" size={14} />
+                      </button>
+                    </div>
+                  ) : (
+                    <label className={`flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-lg cursor-pointer hover:bg-muted/50 transition-colors ${uploading ? 'pointer-events-none opacity-60' : 'border-muted-foreground/30'}`}>
+                      {uploading ? (
+                        <>
+                          <Icon name="Loader2" size={24} className="animate-spin text-muted-foreground mb-1" />
+                          <span className="text-sm text-muted-foreground">Загрузка...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Icon name="Upload" size={24} className="text-muted-foreground mb-1" />
+                          <span className="text-sm text-muted-foreground">Нажмите для загрузки</span>
+                          <span className="text-xs text-muted-foreground/60">JPG, PNG, WebP до 5 МБ</span>
+                        </>
+                      )}
+                      <input
+                        type="file"
+                        accept="image/jpeg,image/png,image/webp,image/gif"
+                        className="hidden"
+                        onChange={e => {
+                          const file = e.target.files?.[0];
+                          if (file) uploadImage(file);
+                          e.target.value = '';
+                        }}
+                      />
+                    </label>
+                  )}
+                  <Input
+                    placeholder="Или вставьте URL"
+                    value={form.image_url}
+                    onChange={e => setForm(prev => ({ ...prev, image_url: e.target.value }))}
+                    className="text-sm"
+                  />
+                </div>
                 <Input
                   type="number"
                   placeholder="Сортировка (0 = первый)"
