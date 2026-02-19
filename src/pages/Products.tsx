@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import Header from '@/components/Header';
 import { useNavigate } from 'react-router-dom';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 
 const PRODUCTS_URL = 'https://functions.poehali.dev/a180b14a-1fbe-4edd-a5af-d4fcaa88bb23';
 
@@ -28,6 +29,7 @@ export default function Products() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<string>('all');
+  const [selected, setSelected] = useState<Product | null>(null);
   const navigate = useNavigate();
 
   const TABS: { key: string; label: string }[] = [
@@ -115,7 +117,7 @@ export default function Products() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <Card className="h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden group">
+                  <Card className="h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden group cursor-pointer" onClick={() => setSelected(product)}>
                     {product.image_url && (
                       <div className="relative h-56 overflow-hidden bg-muted">
                         <img
@@ -167,7 +169,7 @@ export default function Products() {
                             {formatPrice(product.price)}
                           </span>
                         </div>
-                        <Button size="sm" asChild>
+                        <Button size="sm" onClick={e => e.stopPropagation()} asChild>
                           <a href="https://t.me/uplinkctrl" target="_blank" rel="noopener noreferrer">
                             <Icon name="MessageCircle" size={16} className="mr-1" />
                             Заказать
@@ -205,6 +207,74 @@ export default function Products() {
           </div>
         </div>
       </section>
+
+      <Dialog open={!!selected} onOpenChange={open => !open && setSelected(null)}>
+        {selected && (
+          <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+            <DialogHeader>
+              <div className="flex items-center gap-2 mb-1">
+                <span className={`px-3 py-1 rounded-full text-xs font-semibold ${selected.type === 'kit' ? 'bg-primary text-primary-foreground' : 'bg-secondary text-secondary-foreground'}`}>
+                  {{ camera: 'Камера', kit: 'Комплект', recorder: 'Регистратор', switch: 'Коммутатор', other: 'Разное' }[selected.type]}
+                </span>
+                {selected.old_price && (
+                  <span className="bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                    -{Math.round((1 - selected.price / selected.old_price) * 100)}%
+                  </span>
+                )}
+              </div>
+              <DialogTitle className="text-2xl">{selected.name}</DialogTitle>
+              {selected.description && (
+                <DialogDescription className="text-base mt-2">
+                  {selected.description}
+                </DialogDescription>
+              )}
+            </DialogHeader>
+
+            {selected.image_url && (
+              <div className="bg-muted rounded-lg overflow-hidden">
+                <img
+                  src={selected.image_url}
+                  alt={selected.name}
+                  className="w-full h-64 object-contain p-4"
+                />
+              </div>
+            )}
+
+            {Object.keys(selected.specs).length > 0 && (
+              <div className="space-y-1">
+                <p className="text-sm font-semibold text-foreground mb-2">Характеристики</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {Object.entries(selected.specs).map(([key, val]) => (
+                    <div key={key} className="flex justify-between gap-2 bg-muted/50 rounded px-3 py-2">
+                      <span className="text-sm text-muted-foreground">{key}</span>
+                      <span className="text-sm font-medium text-foreground">{val}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="flex items-center justify-between pt-2 border-t">
+              <div>
+                {selected.old_price && (
+                  <span className="text-muted-foreground line-through text-sm mr-2">
+                    {formatPrice(selected.old_price)}
+                  </span>
+                )}
+                <span className="text-3xl font-bold text-primary">
+                  {formatPrice(selected.price)}
+                </span>
+              </div>
+              <Button size="lg" asChild>
+                <a href="https://t.me/uplinkctrl" target="_blank" rel="noopener noreferrer">
+                  <Icon name="MessageCircle" size={18} className="mr-2" />
+                  Заказать
+                </a>
+              </Button>
+            </div>
+          </DialogContent>
+        )}
+      </Dialog>
     </div>
   );
 }
