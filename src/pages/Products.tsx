@@ -119,7 +119,7 @@ export default function Products() {
                 >
                   <Card className="h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden group cursor-pointer" onClick={() => setSelected(product)}>
                     {product.image_url && (
-                      <div className="relative h-44 overflow-hidden bg-muted">
+                      <div className="relative aspect-square overflow-hidden bg-muted">
                         <img
                           src={product.image_url}
                           alt={product.name}
