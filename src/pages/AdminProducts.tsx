@@ -47,10 +47,29 @@ export default function AdminProducts() {
 
   const jsonHeaders = { 'Content-Type': 'application/json' };
 
-  const login = () => {
-    setAdminPassword(password);
-    setIsAuth(true);
-    loadProducts();
+  const login = async () => {
+    if (!password.trim()) {
+      toast({ title: 'Введите пароль', variant: 'destructive' });
+      return;
+    }
+    setLoading(true);
+    try {
+      const res = await fetch(PRODUCTS_URL, {
+        method: 'PUT',
+        headers: jsonHeaders,
+        body: JSON.stringify({ admin_password: password, id: -1 }),
+      });
+      if (res.status === 403) {
+        toast({ title: 'Неверный пароль', variant: 'destructive' });
+        setLoading(false);
+        return;
+      }
+      setAdminPassword(password);
+      setIsAuth(true);
+    } catch {
+      toast({ title: 'Ошибка соединения', variant: 'destructive' });
+    }
+    setLoading(false);
   };
 
   const loadProducts = () => {
