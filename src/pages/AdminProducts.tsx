@@ -42,8 +42,6 @@ export default function AdminProducts() {
   const [loading, setLoading] = useState(false);
   const [editing, setEditing] = useState<Product | null>(null);
   const [form, setForm] = useState<Omit<Product, 'id'>>(emptyProduct);
-  const [specKey, setSpecKey] = useState('');
-  const [specVal, setSpecVal] = useState('');
   const [uploading, setUploading] = useState(false);
   const { toast } = useToast();
 
@@ -76,22 +74,6 @@ export default function AdminProducts() {
   const startNew = () => {
     setEditing(null);
     setForm({ ...emptyProduct });
-  };
-
-  const addSpec = () => {
-    if (specKey.trim()) {
-      setForm(prev => ({ ...prev, specs: { ...prev.specs, [specKey.trim()]: specVal.trim() } }));
-      setSpecKey('');
-      setSpecVal('');
-    }
-  };
-
-  const removeSpec = (key: string) => {
-    setForm(prev => {
-      const newSpecs = { ...prev.specs };
-      delete newSpecs[key];
-      return { ...prev, specs: newSpecs };
-    });
   };
 
   const uploadImage = async (file: File) => {
@@ -307,32 +289,6 @@ export default function AdminProducts() {
                     className="text-sm"
                   />
                 </div>
-                <Input
-                  type="number"
-                  placeholder="Сортировка (0 = первый)"
-                  value={form.sort_order || ''}
-                  onChange={e => setForm(prev => ({ ...prev, sort_order: Number(e.target.value) }))}
-                />
-
-                <div className="space-y-2">
-                  <p className="text-sm font-medium text-foreground">Характеристики</p>
-                  {Object.entries(form.specs).map(([key, val]) => (
-                    <div key={key} className="flex items-center gap-1 text-sm bg-muted rounded px-2 py-1">
-                      <span className="flex-1">{key}: {val}</span>
-                      <button onClick={() => removeSpec(key)} className="text-muted-foreground hover:text-destructive">
-                        <Icon name="X" size={14} />
-                      </button>
-                    </div>
-                  ))}
-                  <div className="flex gap-1">
-                    <Input placeholder="Ключ" value={specKey} onChange={e => setSpecKey(e.target.value)} className="text-sm" />
-                    <Input placeholder="Значение" value={specVal} onChange={e => setSpecVal(e.target.value)} className="text-sm" />
-                    <Button size="sm" variant="outline" onClick={addSpec}>
-                      <Icon name="Plus" size={14} />
-                    </Button>
-                  </div>
-                </div>
-
                 <div className="flex gap-2">
                   <Button className="flex-1" onClick={save} disabled={loading}>
                     {loading ? <Icon name="Loader2" size={16} className="animate-spin mr-1" /> : <Icon name="Save" size={16} className="mr-1" />}

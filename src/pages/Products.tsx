@@ -109,7 +109,7 @@ export default function Products() {
               <p className="text-muted-foreground text-lg">Товары скоро появятся</p>
             </div>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {filtered.map((product, index) => (
                 <motion.div
                   key={product.id}
@@ -119,7 +119,7 @@ export default function Products() {
                 >
                   <Card className="h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden group cursor-pointer" onClick={() => setSelected(product)}>
                     {product.image_url && (
-                      <div className="relative h-56 overflow-hidden bg-muted">
+                      <div className="relative h-44 overflow-hidden bg-muted">
                         <img
                           src={product.image_url}
                           alt={product.name}
@@ -140,38 +140,29 @@ export default function Products() {
                         )}
                       </div>
                     )}
-                    <CardContent className="p-5">
-                      <h3 className="font-bold text-foreground text-lg mb-2 line-clamp-2">
+                    <CardContent className="p-4">
+                      <h3 className="font-bold text-foreground text-sm mb-1 line-clamp-2">
                         {product.name}
                       </h3>
                       {product.description && (
-                        <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
+                        <p className="text-muted-foreground text-xs mb-3 line-clamp-2">
                           {product.description}
                         </p>
-                      )}
-                      {Object.keys(product.specs).length > 0 && (
-                        <div className="flex flex-wrap gap-2 mb-4">
-                          {Object.entries(product.specs).slice(0, 4).map(([key, val]) => (
-                            <span key={key} className="bg-muted text-muted-foreground text-xs px-2 py-1 rounded">
-                              {key}: {val}
-                            </span>
-                          ))}
-                        </div>
                       )}
                       <div className="flex items-end justify-between mt-auto">
                         <div>
                           {product.old_price && (
-                            <span className="text-muted-foreground line-through text-sm mr-2">
+                            <span className="text-muted-foreground line-through text-xs mr-1">
                               {formatPrice(product.old_price)}
                             </span>
                           )}
-                          <span className="text-2xl font-bold text-primary">
+                          <span className="text-lg font-bold text-primary">
                             {formatPrice(product.price)}
                           </span>
                         </div>
                         <Button size="sm" onClick={e => e.stopPropagation()} asChild>
                           <a href="https://t.me/uplinkctrl" target="_blank" rel="noopener noreferrer">
-                            <Icon name="MessageCircle" size={16} className="mr-1" />
+                            <Icon name="MessageCircle" size={14} className="mr-1" />
                             Заказать
                           </a>
                         </Button>
