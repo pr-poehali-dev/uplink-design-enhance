@@ -1018,7 +1018,9 @@ const Index = () => {
                 </li>
                 <li className="flex items-center gap-2">
                   <Icon name="Clock" size={16} />
-                  <span>9:00-18:00 без выходных</span>
+                  <Link to="/admin/products" className="hover:text-white transition-colors">
+                    9:00-18:00 без выходных
+                  </Link>
                 </li>
                 <li className="flex items-center gap-2">
                   <Icon name="User" size={16} />
